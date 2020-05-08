@@ -19,14 +19,14 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
-    <main class="container">
+    <div class="container">
       <div class="row">
-        <div class="col form-ctner">
+        <div class="col-sm-12 form-ctner">
           <form class="form-pswdgen">
             <div class="text-center mb-4">
               <img
                 class="mb-4"
-                src="/docs/4.4/assets/brand/bootstrap-solid.svg"
+                src=""
                 alt=""
                 width="72"
                 height="72"
@@ -36,29 +36,57 @@
                 Some nice text here
               </p>
             </div>
-
-            <div class="form-label-group">
+            <div class="form-group">
               <input
                 type="text"
                 id="inputPass"
                 class="form-control"
                 placeholder="Your New Password"
+                disabled
               />
-              <label for="inputPass">Generated Password</label>
-            </div>
-
-            <div class="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me" /> Option 1
-              </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">
               Generate New Password
             </button>
+            <div class="row user-xtras">
+              <div class="col-sm-12">
+                <button class="btn btn-link btn-lg btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Password Criteria and Logs
+                </button>
+                <div class="row collapse" id="collapseExample">
+                  <div class="col-sm-6">
+                    <div class="card card-body">
+                      <input type="checkbox" id="chkUpperChar">
+                      <label for="chkUpperChar">Uppercase [A-Z]</label>
+                      <input type="checkbox" id="chkLowerCase">
+                      <label for="chkLowerCase">Lowercase [a-z]</label>
+                      <input type="checkbox" id="chkNum">
+                      <label for="chkNum">Numbers [0-9]</label>
+                      <input type="checkbox" id="chkSpecial">
+                      <label for="chkSpecial">Special Chars [!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="card card-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </form>
         </div>
       </div>
-    </main>
-    <script src="script.js" type="text/javascript"></script>
+      <!-- form ends here -->
+    </div>
+    <!-- custom JS -->
+    <script src="assets/js/main.js" type="text/javascript"></script>
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- popper -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!-- bootstrap  -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
