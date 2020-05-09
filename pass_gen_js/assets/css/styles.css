@@ -16,6 +16,14 @@
 	margin: 0 0 10px 0;
 }
 
-.user-xtras a.btn:hover {
+.user-xtras a.btn:hover, .user-xtras a.btn:active, .user-xtras a.btn:focus {
 	text-decoration: none;
+}
+
+.mb-3 label{
+	margin: 7px 15px 0 0;
+}
+
+.mb-3 input{
+	text-align: center;
 }

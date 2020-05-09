@@ -17,6 +17,9 @@ var chkUpper   = document.querySelector("#chkUpperChar");
 var chkLower   = document.querySelector("#chkLowerCase");
 var chkNum     = document.querySelector("#chkNum");
 var chkSpecial = document.querySelector("#chkSpecial");
+var btnDec     = document.querySelector("#dec-length");
+var btnInc     = document.querySelector("#inc-length");
+
 
 //****** MAIN ******
 function pwGenerator(){
@@ -24,25 +27,27 @@ function pwGenerator(){
 }
 
 //****** LISTENERS *******
+//Uppercase box
 chkUpper.addEventListener("click", function (){
 	isUpperChar = chkUpper.checked;
 	console.log("isUpperChar ", isUpperChar);
 });
-
+//Lowercase box
 chkLower.addEventListener("click", function (){
 	isLowerChar = chkLower.checked;
 	console.log("isLowerChar ", isLowerChar);
 });
-
+//Num box
 chkNum.addEventListener("click", function (){
 	isNumber = chkNum.checked;
 	console.log("isNumber ", isNumber);
 });
-
+//Special Chars box
 chkSpecial.addEventListener("click", function (){
 	isSpecial = chkSpecial.checked;
 	console.log("isSpecial ", isSpecial);
 });
+btnDec.addEventListener("click", fnDecLength);
 
 //****** FUNCTIONS ******
 //fnStatusToggle changes boolean values depending on checked boxes status
@@ -52,3 +57,6 @@ function fnStatusToggle(stBool){
 	return !stBool;
 }
 
+function fnDecLength(){
+	
+}
