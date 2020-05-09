@@ -10,3 +10,12 @@
 .user-xtras{
 	padding: 25px 0 0 0;
 }
+
+.user-xtras a.btn {
+	border: 1px solid;
+	margin: 0 0 10px 0;
+}
+
+.user-xtras a.btn:hover {
+	text-decoration: none;
+}

@@ -19,17 +19,30 @@ var chkNum     = document.querySelector("#chkNum");
 var chkSpecial = document.querySelector("#chkSpecial");
 
 //****** MAIN ******
-console.log(isUpperChar);
 function pwGenerator(){
 
 }
 
 //****** LISTENERS *******
 chkUpper.addEventListener("click", function (){
-	isUpperChar = fnStatusToggle(isUpperChar);
-	console.log("after called ", isUpperChar);
+	isUpperChar = chkUpper.checked;
+	console.log("isUpperChar ", isUpperChar);
 });
 
+chkLower.addEventListener("click", function (){
+	isLowerChar = chkLower.checked;
+	console.log("isLowerChar ", isLowerChar);
+});
+
+chkNum.addEventListener("click", function (){
+	isNumber = chkNum.checked;
+	console.log("isNumber ", isNumber);
+});
+
+chkSpecial.addEventListener("click", function (){
+	isSpecial = chkSpecial.checked;
+	console.log("isSpecial ", isSpecial);
+});
 
 //****** FUNCTIONS ******
 //fnStatusToggle changes boolean values depending on checked boxes status

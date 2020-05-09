@@ -50,20 +50,28 @@
             </button>
             <div class="row user-xtras">
               <div class="col-sm-12">
-                <button class="btn btn-link btn-lg btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a class="btn btn-link btn-lg btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                   Password Criteria and Logs
-                </button>
+                </a>
                 <div class="row collapse" id="collapseExample">
                   <div class="col-sm-6">
                     <div class="card card-body">
-                      <input type="checkbox" id="chkUpperChar">
-                      <label for="chkUpperChar">Uppercase [A-Z]</label>
-                      <input type="checkbox" id="chkLowerCase">
-                      <label for="chkLowerCase">Lowercase [a-z]</label>
-                      <input type="checkbox" id="chkNum">
-                      <label for="chkNum">Numbers [0-9]</label>
-                      <input type="checkbox" id="chkSpecial">
-                      <label for="chkSpecial">Special Chars [!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]</label>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="chkUpperChar" checked="true">
+                        <label class="custom-control-label" for="chkUpperChar">Uppercase [A-Z]</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="chkLowerCase" checked="true">
+                        <label class="custom-control-label" for="chkLowerCase">Lowercase [a-z]</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="chkNum" checked="true">
+                        <label class="custom-control-label" for="chkNum">Numbers [0-9]</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="chkSpecial" checked="true">
+                        <label class="custom-control-label" for="chkSpecial">Special Chars [!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]</label>
+                      </div>
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -74,7 +82,6 @@
                 </div>
               </div>
             </div>
-
           </form>
         </div>
       </div>
