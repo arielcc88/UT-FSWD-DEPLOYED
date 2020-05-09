@@ -13,6 +13,7 @@ var isSpecial   = true;
 var passLength  = 12; 
 
 //****** DOM ELEMENTS ******
+var inpLength  = document.querySelector("#passw-length");
 var chkUpper   = document.querySelector("#chkUpperChar");
 var chkLower   = document.querySelector("#chkLowerCase");
 var chkNum     = document.querySelector("#chkNum");
@@ -25,6 +26,7 @@ var btnInc     = document.querySelector("#inc-length");
 function pwGenerator(){
 
 }
+
 
 //****** LISTENERS *******
 //Uppercase box
@@ -47,7 +49,13 @@ chkSpecial.addEventListener("click", function (){
 	isSpecial = chkSpecial.checked;
 	console.log("isSpecial ", isSpecial);
 });
-btnDec.addEventListener("click", fnDecLength);
+//password length spinners
+btnDec.addEventListener("click", fnDecLength); //increment
+btnInc.addEventListener("click", fnIncLength); //decrement
+//manual change of password length - validation.
+inpLength.addEventListener("change", fnValidateLength);
+
+
 
 //****** FUNCTIONS ******
 //fnStatusToggle changes boolean values depending on checked boxes status
@@ -56,7 +64,30 @@ function fnStatusToggle(stBool){
 	console.log("called ", !stBool);
 	return !stBool;
 }
-
+//fnDecLength decreases the password length. minimum is 8 chars.
 function fnDecLength(){
-	
+	if (passLength > 8) {
+		passLength--;
+		fnLengthRender();
+	}
+}
+//fnIncLength increases the password length. maximum is 128 chars.
+function fnIncLength(){
+	if (passLength < 128) {
+		passLength++;
+		fnLengthRender();
+	}
+}
+//fnLengthRender updates the pasword length input value
+function fnLengthRender(){
+	inpLength.value = passLength;
+}
+//fnValidateLength ensures password length does not go out of acceptance range [8-128]
+function fnValidateLength(){
+	if (inpLength.value < 8) {
+		inpLength.value = 8; //forcing value to lowest allowed
+	}
+	else if (inpLength.value > 128) {
+		inpLength.value = 128; //enforcing value to highest allowed
+	}
 }
