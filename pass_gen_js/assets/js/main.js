@@ -1,10 +1,11 @@
 //****** VAR DECLARATIONS *******
 // arrUpChar, arrLowChar, arrNum, arrSpecial will contain all possible 
 // options to buld the password.
-var arrUpChar  = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
-var arrLowChar = "abcdefghiklmnopqrstuvwxyz";
+var arrUpperChar  = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
+var arrLowerCase  = "abcdefghiklmnopqrstuvwxyz";
 var arrNum	   = "0123456789";
 var arrSpecial = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+var pswdSrc    = arrUpperChar + arrLowerCase + arrNum + arrSpecial;
 //User options status. By default all are applied.
 var isUpperChar = true;
 var isLowerChar = true;
@@ -32,29 +33,28 @@ function pwGenerator(){
 //Uppercase box
 chkUpper.addEventListener("click", function (){
 	isUpperChar = chkUpper.checked;
-	console.log("isUpperChar ", isUpperChar);
+	fnUpdatePswdSrc(isUpperChar, arrUpperChar);
 });
 //Lowercase box
 chkLower.addEventListener("click", function (){
 	isLowerChar = chkLower.checked;
-	console.log("isLowerChar ", isLowerChar);
+	fnUpdatePswdSrc(isLowerChar, arrLowerCase);
 });
 //Num box
 chkNum.addEventListener("click", function (){
 	isNumber = chkNum.checked;
-	console.log("isNumber ", isNumber);
+	fnUpdatePswdSrc(isNumber, arrNum);
 });
 //Special Chars box
 chkSpecial.addEventListener("click", function (){
 	isSpecial = chkSpecial.checked;
-	console.log("isSpecial ", isSpecial);
+	fnUpdatePswdSrc(isSpecial, arrSpecial);
 });
 //password length spinners
 btnDec.addEventListener("click", fnDecLength); //increment
 btnInc.addEventListener("click", fnIncLength); //decrement
 //manual change of password length - validation.
 inpLength.addEventListener("change", fnValidateLength);
-
 
 
 //****** FUNCTIONS ******
@@ -90,4 +90,15 @@ function fnValidateLength(){
 	else if (inpLength.value > 128) {
 		inpLength.value = 128; //enforcing value to highest allowed
 	}
+}
+//updates the password source string based on checkbox status
+function fnUpdatePswdSrc (chkBoxSt, strID){
+	console.log("isUpperChar status", chkBoxSt);
+	if (chkBoxSt && !pswdSrc.includes(strID)) {
+		pswdSrc += strID;
+	}
+	else if (!chkBoxSt && pswdSrc.includes(strID)) {
+		pswdSrc = pswdSrc.replace(strID, "");
+	}
+	console.log(pswdSrc);
 }
