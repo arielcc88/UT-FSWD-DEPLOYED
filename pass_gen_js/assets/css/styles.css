@@ -39,3 +39,10 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.criteria-val, .pswd-length-val{
+	padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}

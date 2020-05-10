@@ -14,6 +14,7 @@ var isSpecial   = true;
 var passLength  = 12; 
 
 //****** DOM ELEMENTS ******
+var btnGenerate= document.querySelector("#generateBtn");
 var inpLength  = document.querySelector("#passw-length");
 var chkUpper   = document.querySelector("#chkUpperChar");
 var chkLower   = document.querySelector("#chkLowerCase");
@@ -21,7 +22,8 @@ var chkNum     = document.querySelector("#chkNum");
 var chkSpecial = document.querySelector("#chkSpecial");
 var btnDec     = document.querySelector("#dec-length");
 var btnInc     = document.querySelector("#inc-length");
-
+var pswdVal    = document.querySelector(".pswd-length-val");
+var critVal    = document.querySelector(".criteria-val");
 
 //****** MAIN ******
 function pwGenerator(){
@@ -33,28 +35,59 @@ function pwGenerator(){
 //Uppercase box
 chkUpper.addEventListener("click", function (){
 	isUpperChar = chkUpper.checked;
-	fnUpdatePswdSrc(isUpperChar, arrUpperChar);
+	if (isUpperChar || (!isUpperChar && (fnChkBoxValidation() > 0))) {
+		fnUpdatePswdSrc(isUpperChar, arrUpperChar);
+	}
+	else{
+		//btnGenerate.disabled = true;
+		chkUpper.checked = true;
+		isUpperChar = true;
+		critVal.textContent = "At least one criteria is required!";
+	}
 });
 //Lowercase box
 chkLower.addEventListener("click", function (){
 	isLowerChar = chkLower.checked;
-	fnUpdatePswdSrc(isLowerChar, arrLowerCase);
+	if (isLowerChar || (!isLowerChar && (fnChkBoxValidation() > 0))) {
+		fnUpdatePswdSrc(chkLower.checked, arrLowerCase);
+	}
+	else{
+		chkLower.checked = true;
+		isLowerChar = true;
+		critVal.textContent = "At least one criteria is required!";
+	}
+	
 });
 //Num box
 chkNum.addEventListener("click", function (){
 	isNumber = chkNum.checked;
-	fnUpdatePswdSrc(isNumber, arrNum);
+	if (isNumber || (!isNumber && (fnChkBoxValidation() > 0))) {
+		fnUpdatePswdSrc(chkNum.checked, arrNum);
+	}
+	else{
+		chkNum.checked = true;
+		isNumber = true;
+		critVal.textContent = "At least one criteria is required!";
+	}
 });
 //Special Chars box
 chkSpecial.addEventListener("click", function (){
 	isSpecial = chkSpecial.checked;
-	fnUpdatePswdSrc(isSpecial, arrSpecial);
+	if (isSpecial || (!isSpecial && (fnChkBoxValidation() > 0))) {
+		fnUpdatePswdSrc(chkSpecial.checked, arrSpecial);
+	}
+	else{
+		chkSpecial.checked = true;
+		isSpecial = true;
+		critVal.textContent = "At least one criteria is required!";
+	}
 });
 //password length spinners
 btnDec.addEventListener("click", fnDecLength); //increment
 btnInc.addEventListener("click", fnIncLength); //decrement
 //manual change of password length - validation.
 inpLength.addEventListener("change", fnValidateLength);
+//preventing default form behavior if enter pressed on length input
 
 
 //****** FUNCTIONS ******
@@ -93,12 +126,25 @@ function fnValidateLength(){
 }
 //updates the password source string based on checkbox status
 function fnUpdatePswdSrc (chkBoxSt, strID){
-	console.log("isUpperChar status", chkBoxSt);
 	if (chkBoxSt && !pswdSrc.includes(strID)) {
 		pswdSrc += strID;
 	}
 	else if (!chkBoxSt && pswdSrc.includes(strID)) {
 		pswdSrc = pswdSrc.replace(strID, "");
 	}
-	console.log(pswdSrc);
+	//clear validation text
+	critVal.textContent = "";
+	console.log("Pswd Src ",pswdSrc);
+}
+//fnChkBoxValidation ensures at least one password criteria is selected.
+function fnChkBoxValidation(){
+	let criteriaArray = [isUpperChar, isLowerChar, isNumber, isSpecial];
+	let chkdCounter = 0;
+	criteriaArray.forEach(function(element){
+		if(element){
+			chkdCounter++;
+		}
+	});
+	console.log(chkdCounter);
+	return chkdCounter;
 }

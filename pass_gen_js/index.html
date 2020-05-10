@@ -45,7 +45,7 @@
                 disabled
               />
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">
+            <button class="btn btn-lg btn-primary btn-block" type="submit" id="generateBtn">
               Generate New Password
             </button>
             <div class="row user-xtras">
@@ -66,22 +66,24 @@
                           <button class="btn btn-outline-primary" type="button" id="inc-length"><i class="fas fa-plus"></i></button>
                         </div>
                       </div>
+                      <span class="pswd-length-val"></span>
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="chkUpperChar" checked="true">
                         <label class="custom-control-label" for="chkUpperChar">Uppercase [A-Z]</label>
                       </div>
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="chkLowerCase" checked="true">
+                        <input type="checkbox" class="custom-control-input" id="chkLowerCase" checked>
                         <label class="custom-control-label" for="chkLowerCase">Lowercase [a-z]</label>
                       </div>
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="chkNum" checked="true">
+                        <input type="checkbox" class="custom-control-input" id="chkNum" checked>
                         <label class="custom-control-label" for="chkNum">Numbers [0-9]</label>
                       </div>
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="chkSpecial" checked="true">
+                        <input type="checkbox" class="custom-control-input" id="chkSpecial" checked>
                         <label class="custom-control-label" for="chkSpecial">Special Chars [!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]</label>
                       </div>
+                      <span class="criteria-val"></span>
                     </div>
                   </div>
                   <div class="col-sm-6">
