@@ -46,3 +46,19 @@ input[type=number] {
     font-weight: bold;
     color: red;
 }
+
+.pgm-error {
+	display: flex;
+	justify-content: center;
+}
+
+.pgm-error .alert{
+	display: none;
+	width: 80%;
+}
+
+.pswdcount{
+	height: 232px;
+	overflow-x: auto;
+	overflow-y: auto;
+}

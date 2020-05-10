@@ -33,7 +33,7 @@
               />
               <h1 class="h3 mb-3 font-weight-normal">Password Generator</h1>
               <p>
-                Some nice text here
+                Click on the "Generate New Password" button to create a password using default settings. Click on the "Password Criteria and Logs" option to change generation settings and see history of generated passwords on this session. <strong>[Notice: Logs are not persisted]</strong>
               </p>
             </div>
             <div class="form-group">
@@ -87,14 +87,20 @@
                     </div>
                   </div>
                   <div class="col-sm-6">
-                    <div class="card card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    <div class="card card-body pswdcount">
+                      <p>Password Count: <span id="pswd-count">0</span></p>
+                      <ol id="pswd-list"></ol>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </form>
+        </div>
+        <div class="col-sm-12 pgm-error">
+          <div class="alert alert-danger" role="alert">
+            Please review your criteria selection and password length. At least one criteria is required and pasword length must be between 8 and 128 characters.
+          </div>
         </div>
       </div>
       <!-- form ends here -->

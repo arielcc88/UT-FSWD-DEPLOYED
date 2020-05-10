@@ -27,20 +27,29 @@ var btnDec     = document.querySelector("#dec-length");
 var btnInc     = document.querySelector("#inc-length");
 var pswdVal    = document.querySelector(".pswd-length-val");
 var critVal    = document.querySelector(".criteria-val");
+var alrtDanger = document.querySelector(".alert-danger");
+var PassWLog   = document.querySelector("#pswd-list");
+var PassCnt	   = document.querySelector("#pswd-count");
 
 //****** MAIN ******
+//loading previous passwords if any
+fnRenderLogs();
+
 function pwGenerator(){
 //call master validation function
-	if (fnMasterVal) {
+	if (fnMasterVal()) {
 		let randomPass = "";
 		for (let i = 0; i < passLength; i++) {
 			let ranChar = Math.floor(Math.random() * pswdSrc.length);
 			randomPass += pswdSrc.substring(ranChar,ranChar + 1);
 		}
 		inpPass.value = randomPass;
+		arrPassLog.push(randomPass);
+		fnRenderLogs();
 	}
 	else{
 		//alert of problem with either criteria for password generation.
+		alrtDanger.style.display = "block";
 	}
 }
 
@@ -113,10 +122,26 @@ btnGenerate.addEventListener("click", function(e){
 
 
 //****** FUNCTIONS ******
+//function Render Log: displays hisotry of generated passwords
+function fnRenderLogs(){
+	PassWLog.textContent = "";
+	PassCnt.textContent
+	if (arrPassLog.length > 0) {
+		arrPassLog.forEach(function (element) {
+	    let genPassElem = document.createElement("li");
+	    genPassElem.textContent = element;
+	    PassWLog.appendChild(genPassElem);
+	  });
+	}
+	fnUpdatePswdCount();
+}
+//fnUpdatePswdCount
+function fnUpdatePswdCount(){
+	PassCnt.textContent = arrPassLog.length;
+}
 //fnStatusToggle changes boolean values depending on checked boxes status
 //used to verify what options the user wants to applye the password.
 function fnStatusToggle(stBool){
-	console.log("called ", !stBool);
 	return !stBool;
 }
 //fnDecLength decreases the password length. minimum is 8 chars.
@@ -157,7 +182,6 @@ function fnUpdatePswdSrc (chkBoxSt, strID){
 	}
 	//clear validation text
 	critVal.textContent = "";
-	console.log("Pswd Src ",pswdSrc);
 }
 //fnChkBoxValidation ensures at least one password criteria is selected.
 function fnChkBoxValidation(){
@@ -170,12 +194,12 @@ function fnChkBoxValidation(){
 			chkdCounter++;
 		}
 	});
-	console.log(chkdCounter);
 	return chkdCounter;
 }
 //Master validation function. With the validation already in place, this is optional.
 function fnMasterVal(){
-	if ((fnChkBoxValidation > 0) && (passLength >= 8 && passLength <= 128) && (pswdSrc !== "")) {
+	// debugger;
+	if ((fnChkBoxValidation() > 0) && (passLength >= 8 && passLength <= 128) && (pswdSrc !== "")) {
 		return true;
 	}
 	else{
