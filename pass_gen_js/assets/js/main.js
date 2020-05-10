@@ -6,6 +6,7 @@ var arrLowerCase  = "abcdefghiklmnopqrstuvwxyz";
 var arrNum	   = "0123456789";
 var arrSpecial = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 var pswdSrc    = arrUpperChar + arrLowerCase + arrNum + arrSpecial;
+var arrPassLog = [];
 //User options status. By default all are applied.
 var isUpperChar = true;
 var isLowerChar = true;
@@ -14,6 +15,8 @@ var isSpecial   = true;
 var passLength  = 12; 
 
 //****** DOM ELEMENTS ******
+var frmPassGen = document.querySelector(".form-pswdgen");
+var inpPass    = document.querySelector("#inputPass");
 var btnGenerate= document.querySelector("#generateBtn");
 var inpLength  = document.querySelector("#passw-length");
 var chkUpper   = document.querySelector("#chkUpperChar");
@@ -27,7 +30,18 @@ var critVal    = document.querySelector(".criteria-val");
 
 //****** MAIN ******
 function pwGenerator(){
-
+//call master validation function
+	if (fnMasterVal) {
+		let randomPass = "";
+		for (let i = 0; i < passLength; i++) {
+			let ranChar = Math.floor(Math.random() * pswdSrc.length);
+			randomPass += pswdSrc.substring(ranChar,ranChar + 1);
+		}
+		inpPass.value = randomPass;
+	}
+	else{
+		//alert of problem with either criteria for password generation.
+	}
 }
 
 
@@ -88,6 +102,14 @@ btnInc.addEventListener("click", fnIncLength); //decrement
 //manual change of password length - validation.
 inpLength.addEventListener("change", fnValidateLength);
 //preventing default form behavior if enter pressed on length input
+frmPassGen.addEventListener("submit", function(e){
+	e.preventDefault();
+});
+//generating password
+btnGenerate.addEventListener("click", function(e){
+	e.preventDefault();
+	pwGenerator();
+});
 
 
 //****** FUNCTIONS ******
@@ -123,6 +145,7 @@ function fnValidateLength(){
 	else if (inpLength.value > 128) {
 		inpLength.value = 128; //enforcing value to highest allowed
 	}
+	passLength = inpLength.value;
 }
 //updates the password source string based on checkbox status
 function fnUpdatePswdSrc (chkBoxSt, strID){
@@ -138,6 +161,8 @@ function fnUpdatePswdSrc (chkBoxSt, strID){
 }
 //fnChkBoxValidation ensures at least one password criteria is selected.
 function fnChkBoxValidation(){
+	//using let so this variables only exist in this function's scope
+	//ensuring they are updated every time the function is called.
 	let criteriaArray = [isUpperChar, isLowerChar, isNumber, isSpecial];
 	let chkdCounter = 0;
 	criteriaArray.forEach(function(element){
@@ -147,4 +172,13 @@ function fnChkBoxValidation(){
 	});
 	console.log(chkdCounter);
 	return chkdCounter;
+}
+//Master validation function. With the validation already in place, this is optional.
+function fnMasterVal(){
+	if ((fnChkBoxValidation > 0) && (passLength >= 8 && passLength <= 128) && (pswdSrc !== "")) {
+		return true;
+	}
+	else{
+		return false;
+	}
 }
