@@ -9,15 +9,20 @@
   opacity: ;
 }
 
-.form-centered {
-  align-items: center;
+.center-ctner{
   background-color: #ffffff94;
+  align-items: center;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  height: 200px;
-  margin: 0 250px;
-  padding: 25px;
+  padding: 20px;
+}
+
+.form-centered {
+ /* display: inherit;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;*/
 }
 
 .user-corner {
