@@ -1,64 +1,35 @@
-.form-pswdgen {
-  width: 80%;
+.cod-quiz {
+  /* parallax */
+  background-image: url("../images/bg-masthead.jpg");
+  height: 760px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: ;
 }
 
-.form-ctner {
+.form-centered {
+  align-items: center;
+  background-color: #ffffff94;
+  border-radius: 10px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  height: 200px;
+  margin: 0 250px;
+  padding: 25px;
 }
 
-.user-xtras{
-	padding: 25px 0 0 0;
+.user-corner {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.user-xtras a.btn {
-	border: 1px solid;
-	margin: 0 0 10px 0;
-}
-
-.user-xtras a.btn:hover, .user-xtras a.btn:active, .user-xtras a.btn:focus {
-	text-decoration: none;
-}
-
-.mb-3 label{
-	margin: 7px 15px 0 0;
-}
-
-.mb-3 input{
-	text-align: center;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-.criteria-val, .pswd-length-val{
-	padding: 10px;
-    text-align: center;
-    font-weight: bold;
-    color: red;
-}
-
-.pgm-error {
-	display: flex;
-	justify-content: center;
-}
-
-.pgm-error .alert{
-	display: none;
-	width: 80%;
-}
-
-.pswdcount{
-	height: 232px;
-	overflow-x: auto;
-	overflow-y: auto;
+.user-corner h5 {
+  background-color: #ffffff94;
+  border-radius: 10px;
+  /* -webkit-box-shadow: 2px 2px 13px -6px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 2px 2px 13px -6px rgba(0, 0, 0, 0.63);
+  box-shadow: 2px 2px 13px -6px rgba(0, 0, 0, 0.63); */
+  padding: 5px;
 }
