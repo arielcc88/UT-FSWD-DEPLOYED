@@ -36,17 +36,20 @@
                   Nice Text here
                 </p>
                 <div>
-                  <form>
+                  <form id="welcome-form">
                     <div class="form-row align-items-center">
                       <div class="col-sm-6 my-1">
-                        <label class="sr-only" for="inlineFormInputName">Name</label>
-                        <input type="text" class="form-control" id="inlineFormInputName" placeholder="Enter Your Name">
+                        <label class="sr-only" for="welcome-input">Name</label>
+                        <input type="text" class="form-control" id="welcome-input" placeholder="Enter Your Name">
                       </div>
                       <div class="col-auto my-1">
-                        <button class="btn btn-primary">Test My Knowledge</button>
+                        <button class="btn btn-primary" id="start-button">Test My Knowledge</button>
                       </div>
                     </div>
                   </form>
+                </div>
+                <div id="alert-notify" class="alert alert-danger alert-no-visible">
+                  ** Name Required
                 </div>
               </div> 
             </div>
