@@ -1,6 +1,6 @@
-//TODO: prevent default behavior of submit button of welcome form
+//TODO: --done-- prevent default behavior of submit button of welcome form 
 //TODO: define user object
-	//>> validate input not empty
+	//>> --done-- validate input not empty
 	//>> create user object
 		//>> full name
 		//>> score
@@ -36,6 +36,7 @@ startBtn.addEventListener("click", function(e){
 	//validate user input function
 	if(fnIsEmpty()){
 		console.log("not empt");
+		//call user object creation & storage
 	}
 	else {
 		console.log("empt");
@@ -63,11 +64,30 @@ FUNCTION DECLARATIONS
 */
 //Validating input --> not empty
 function fnIsEmpty(){
-	const userNameInput = welcomeInput.value;
-	if(userNameInput){
+	if(welcomeInput.value){
 		return true;
 	}
 	else{
 		return false;
 	}
 }
+
+// Function returns user object
+function fnUserObject(userName){
+	return {
+		username: userName,
+		score: 0,
+		correct: 0,
+		wrong: 0,
+		missed: 0
+	}
+}
+
+
+// function stores string in local storage
+function fnStoreInLocal(data){
+	
+}
+
+
+//function converts object, arrays into strings
