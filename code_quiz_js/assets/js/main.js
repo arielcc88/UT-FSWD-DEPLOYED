@@ -1,4 +1,10 @@
-//TODO:
+//TODO:1st Question transition
+//set timer and countdown (initialize timer)
+//create object question
+//>> question
+//>> correct answer
+//>> decoys
+//>> time cost if wrong
 
 //************************************************************************************
 
@@ -7,10 +13,33 @@
 VARIABLE DECLARATIONS
 ------------
 */
+const welcomeCtner = document.querySelector(".welcome-ctner");
 const welcomeForm = document.querySelector("#welcome-form");
 const startBtn = document.querySelector("#start-button");
 const welcomeInput = document.querySelector("#welcome-input");
 const alertNotify = document.querySelector("#alert-notify");
+const userCornerInfo = document.querySelector("#user-info");
+const userCornerCtner = document.querySelector(".user-corner");
+//question card
+const questionCard = document.querySelector(".question-card");
+const questionTitle = document.querySelector(".question");
+const questionList = document.querySelector(".answer-list");
+
+//questions array
+const quizQuestions = [
+  {
+    questionTitle: "What is JavaScript?",
+    answers: [
+      "Coffee",
+      "Computer HW",
+      "Programming Language",
+      "Some World City",
+    ],
+    correctAnswer: "Programming Language",
+    questionVal: 10,
+    timeCost: 5,
+  },
+];
 
 /*
 ------------
@@ -22,13 +51,18 @@ startBtn.addEventListener("click", function (e) {
   e.preventDefault();
   //validate user input function
   if (fnIsEmpty()) {
-    console.log("not empt");
     //call user object creation & storage
-    fnSetObjInLocal(fnUserObject(welcomeInput.value));
+    fnSetObjInLocal(welcomeInput.value, fnUserObject(welcomeInput.value));
+    welcomeCtner.classList.add("no-visible"); // hiding welcome form
+    //displaying 1st question
+    fnSetQuestionCard(0);
+    //updating user corner content
+    fnSetUserCorner(welcomeInput.value);
+    questionCard.classList.remove("no-visible");
+    userCornerCtner.classList.remove("no-visible");
   } else {
-    console.log("empt");
     //change alert div class: display block.
-    alertNotify.classList.remove("alert-no-visible");
+    alertNotify.classList.remove("no-visible");
   }
   //create user object
 
@@ -38,7 +72,7 @@ startBtn.addEventListener("click", function (e) {
 //Welcome page text input listener
 welcomeInput.addEventListener("keyup", function () {
   //hiding alert notification in case is shown
-  alertNotify.classList.add("alert-no-visible");
+  alertNotify.classList.add("no-visible");
 });
 
 /*
@@ -66,8 +100,8 @@ function fnUserObject(userName) {
 }
 
 //store the object in the local storage
-function fnSetObjInLocal(objName) {
-  localStorage.setItem(objName, JSON.stringify(objName));
+function fnSetObjInLocal(objName, objVal) {
+  localStorage.setItem(objName, JSON.stringify(objVal));
   //TODO: validate if user name exist - show message
 }
 
@@ -82,4 +116,27 @@ function fnUpdateValueInLocal(objName, objKey, objValue) {
   storedObj[objKey] = objValue;
   //store back the object in the local storage
   localStorage.setItem(objName, JSON.stringify(storedObj));
+}
+
+//Loading question content function
+function fnSetQuestionCard(questionIndex) {
+  let questionObj = quizQuestions[questionIndex]; //question object
+  //populating card content from object
+  questionTitle.textContent = questionObj.questionTitle;
+  questionObj.answers.forEach(function (answer_val, answer_index) {
+    var answerLi = document.createElement("li");
+    var answerBtn = document.createElement("button");
+    answerBtn.textContent = answer_val;
+    answerBtn.setAttribute("value", answer_index);
+    answerBtn.classList.add("answerbtn");
+    answerLi.appendChild(answerBtn);
+    questionList.appendChild(answerLi);
+  });
+}
+
+//updating user-corner info
+function fnSetUserCorner(userObjName) {
+  let userObj = localStorage.getItem(userObjName);
+  userCornerInfo.textContent =
+    JSON.parse(userObj).username + ": " + JSON.parse(userObj).score;
 }

@@ -21,15 +21,15 @@
   <body class="cod-quiz">
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
-        <div class="user-corner">
-          <h5>User Name here</h5>
+        <div class="user-corner no-visible">
+          <h5 id="user-info">User Name here</h5>
         </div>
       </header>
 
       <main class="inner cover">
         <div class="container">
           <div class="row">
-            <div class="col-sm-12 center-ctner">
+            <div class="col-sm-12 center-ctner welcome-ctner">
               <div class="form-centered">
                 <h1 class="cover-heading">Welcome to the Coding Quiz!!!</h1>
                 <p class="lead">
@@ -40,24 +40,39 @@
                     <div class="form-row align-items-center">
                       <div class="col-sm-6 my-1">
                         <label class="sr-only" for="welcome-input">Name</label>
-                        <input type="text" class="form-control" id="welcome-input" placeholder="Enter Your Name">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="welcome-input"
+                          placeholder="Enter Your Name"
+                        />
                       </div>
                       <div class="col-auto my-1">
-                        <button class="btn btn-primary" id="start-button">Test My Knowledge</button>
+                        <button class="btn btn-primary" id="start-button">
+                          Test My Knowledge
+                        </button>
                       </div>
                     </div>
                   </form>
                 </div>
-                <div id="alert-notify" class="alert alert-danger alert-no-visible">
+                <div id="alert-notify" class="alert alert-danger no-visible">
                   ** Name Required
                 </div>
-              </div> 
+              </div>
+            </div>
+            <div class="col-sm-12 question-card center-ctner no-visible">
+              <div class="question-title">
+                <h3 class="question"></h3>
+              </div>
+              <div class="answer-group">
+                <ul class="answer-list"></ul>
+              </div>
             </div>
           </div>
         </div>
       </main>
 
-<!--       <footer class="mastfoot mt-auto">
+      <!--       <footer class="mastfoot mt-auto">
         <div class="inner">
           <p>footer here</p>
         </div>
@@ -66,12 +81,27 @@
     <!-- custom JS -->
     <script src="assets/js/main.js" type="text/javascript"></script>
     <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
     <!-- popper -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
     <!-- bootstrap  -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
     <!-- Font Awesome CDN kit -->
-    <script src="https://kit.fontawesome.com/e49e402f85.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/e49e402f85.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

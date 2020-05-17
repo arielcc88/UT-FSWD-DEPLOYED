@@ -9,7 +9,7 @@
   opacity: ;
 }
 
-.center-ctner{
+.center-ctner {
   background-color: #ffffff94;
   align-items: center;
   border-radius: 10px;
@@ -19,7 +19,7 @@
 }
 
 .form-centered {
- /* display: inherit;
+  /* display: inherit;
   flex-direction: column;
   align-items: center;
   text-align: center;*/
@@ -39,10 +39,14 @@
   padding: 5px;
 }
 
-.alert-no-visible{
+.no-visible {
   display: none;
 }
 
-.alert-visible{
+.visible {
   display: block;
+}
+
+.question-card {
+  /* display: none; */
 }
