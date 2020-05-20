@@ -14,7 +14,6 @@ $(document).ready(function () {
     */
      //testing moment js
     const test = fnSetCalendar();
-    console.log(test[0]);
     fnRenderCalendarHTML(test);
     //   console.log(calendar);
     //   console.log(calendar[0].days[1]._d.getDate()); //returns day of the month in number format
@@ -74,12 +73,40 @@ $(document).ready(function () {
         $(".calendar-ctner").append(calendarTable);
         //appending column header row
         $(".calendar-ctner > table > thead").append("<tr class=\"theader\"></tr>");
-        const calendarHeadRow = $(".calendar-ctner > table > thead > tr.theader");
-        //loading headers
-        let calendarHeader;
-        for(const dayName in calendarObj[0]){
-            //creating <th> per each day
-            calendarHeadRow.append("<th>"+ calendarObj[0][dayName] +"</th>");
+        //Rendering
+        for(item in calendarObj){
+            if (item === "0") {
+                //call fnGetCalendarHeader()
+                fnGetCalendarHeader(calendarObj[0]);
+                
+            } else {
+                //call function to load table body content
+                fnGetCalendarBody(calendarObj[item]);
+                //console.log('item: ', calendarObj[item]);
+            }
         }
+    }
+
+    function fnGetCalendarHeader(calendarDaysObj){
+        //loading headers
+        const calendarHeadRow = $(".calendar-ctner > table > thead > tr.theader");
+        for(const dayName in calendarDaysObj){
+            //creating <th> per each day
+            calendarHeadRow.append("<th>"+ calendarDaysObj[dayName] +"</th>");
+        }
+    }
+
+    function fnGetCalendarBody(CalendarWeekObj){
+        //target table body
+        const calendarBody = $(".calendar-ctner > table > tbody");
+        //create a new row each time this function is called -- means a new week is rendered
+        const calendarBodyRowNew = $("<tr>");
+        for(day of CalendarWeekObj["days"]){
+            //getting day of month using moment js getDate() method
+            console.log("month", day._d.getMonth());
+            calendarBodyRowNew.append("<td>" + day._d.getDate() + "</td>")
+        }
+        //apending tr element to existing table
+        calendarBody.append(calendarBodyRowNew);
     }
 });
