@@ -12,8 +12,13 @@ $(document).ready(function () {
     MAIN
     ---------
     */
-   fnRenderCalendarHTML();
-
+     //testing moment js
+    const test = fnSetCalendar();
+    console.log(test[0]);
+    fnRenderCalendarHTML(test);
+    //   console.log(calendar);
+    //   console.log(calendar[0].days[1]._d.getDate()); //returns day of the month in number format
+    //   console.log(calendar[0].days[1]._d.getDay()); //returns day of the week in number format -- Sun is 0 - Sat is 6
 
 
     /*
@@ -60,22 +65,21 @@ $(document).ready(function () {
     function fnRenderCalendarHTML(calendarObj){
         //function renders a table
         //first create the table element
-        let calendarTable = $("<table>");
-        //TODO: add table class
-
+        const calendarTable = $("<table>");
+        //add table class
+        calendarTable.addClass("table");
         //create and append <th> to table 
         calendarTable.append($("<thead>"), $("<tbody>"));
         //appending table to HTML
         $(".calendar-ctner").append(calendarTable);
-
-        //test
-        $(".calendar-ctner > table > thead").append("<tr><th>test</th></tr>");
+        //appending column header row
+        $(".calendar-ctner > table > thead").append("<tr class=\"theader\"></tr>");
+        const calendarHeadRow = $(".calendar-ctner > table > thead > tr.theader");
+        //loading headers
+        let calendarHeader;
+        for(const dayName in calendarObj[0]){
+            //creating <th> per each day
+            calendarHeadRow.append("<th>"+ calendarObj[0][dayName] +"</th>");
+        }
     }
-
-  //testing moment js
-  const test = fnSetCalendar();
-  console.log(test[0][0]);
-//   console.log(calendar);
-//   console.log(calendar[0].days[1]._d.getDate()); //returns day of the month in number format
-//   console.log(calendar[0].days[1]._d.getDay()); //returns day of the week in number format -- Sun is 0 - Sat is 6
 });
