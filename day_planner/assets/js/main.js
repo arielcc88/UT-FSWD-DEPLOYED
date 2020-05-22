@@ -201,6 +201,7 @@ $(document).ready(function () {
   //function that renders time blocks with any existing task for that day
   //function receives a date (by default it uses today's date)
   function fnTaskGridRender(dateToRender) {
+    //TODO: validate if date is past, present or future and adjust New Task btn class
     const taskGridDiv = $(".task-line-grid");
     const dateToMomentObj = moment(dateToRender, "MM-DD-YYYY");
     console.log("grid Render", dateToMomentObj);
@@ -208,15 +209,24 @@ $(document).ready(function () {
       //repeating same process per each business hour
       //call function to create hour display div
       taskGridDiv.append(fnHourDisplayDiv(i));
+      //TODO function to render stored tasks
+      taskGridDiv.append('<div class="col-sm-7 task-ctner d-border">Task Titles</div>');
+      taskGridDiv.append(fnSetNewTaskBtn(dateToRender, fnGetTimeSlot(i)));
     }
   }
 
   //function fnHourDisplayDiv returns a div element for displaying the hour
   function fnHourDisplayDiv(hourIteration) {
     //checking whether ante or post meridiem
-    let meridiemText = "";
     const divElement = $("<div>");
     divElement.addClass("col-sm-2 dtime d-border");
+    divElement.text(fnGetTimeSlot(hourIteration));
+
+    return divElement;
+  }
+
+  function fnGetTimeSlot(hourIteration) {
+    let meridiemText = "";
     if (hourIteration < 12) {
       meridiemText = String(hourIteration) + ":00 AM";
     } else {
@@ -225,7 +235,23 @@ $(document).ready(function () {
           ? String(hourIteration - 12) + ":00 PM"
           : String(hourIteration) + ":00 PM";
     }
-    divElement.text(meridiemText);
+
+    return meridiemText;
+  }
+
+  //function fnSetNewTaskBtn() creates the New Task button for each hour block
+  function fnSetNewTaskBtn(blkDate, blkTimeSlot) {
+    //the date and time slots will be added to the button using data-* attrs.
+    const newTBtn = $("<button>");
+    const divElement = $("<div>");
+    divElement.addClass("col-sm-3 btn-add d-border");
+    newTBtn.text("New Task");
+    newTBtn.addClass("btn btn-outline-primary");
+    newTBtn.attr({
+      "data-date": blkDate,
+      "data-time": blkTimeSlot,
+    });
+    divElement.append(newTBtn);
 
     return divElement;
   }
