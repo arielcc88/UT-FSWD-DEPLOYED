@@ -4,6 +4,9 @@ $(document).ready(function () {
     VAR DECLARATION
     ---------
     */
+  //business hours
+  const startDay = 8; //8:00 am
+  const endDay = 17; //5:00 pm
 
   /*
     ---------
@@ -13,6 +16,7 @@ $(document).ready(function () {
   //testing moment js
   const test = fnSetCalendar();
   fnRenderCalendarHTML(test);
+  fnTaskGridRender("5/21/2020");
   //   console.log(calendar);
   //   console.log(calendar[0].days[1]._d.getDate()); //returns day of the month in number format
   //   console.log(calendar[0].days[1]._d.getDay()); //returns day of the week in number format -- Sun is 0 - Sat is 6
@@ -78,7 +82,8 @@ $(document).ready(function () {
       } else {
         //call function to load table body content
         fnGetCalendarBody(calendarObj[item]);
-        //console.log('item: ', calendarObj[item]);
+        // console.log('item: ', calendarObj[item]);
+        // console.log('item: ', calendarObj[item].days[0]._d.toLocaleDateString());
       }
     }
   }
@@ -100,19 +105,31 @@ $(document).ready(function () {
     for (day of CalendarWeekObj["days"]) {
       //getting day of month using moment js getDate() method
       if (fnIsPassed(day._d)) {
-        console.log("isPassed");
+        // console.log("isPassed");
         calendarBodyRowNew.append(
-          '<td class="passed">' + day._d.getDate() + "</td>"
+          '<td class="passed" data-localedate="' +
+            day._d.toLocaleDateString() +
+            '">' +
+            day._d.getDate() +
+            "</td>"
         );
       } else if (fnIsToday(day._d)) {
-        console.log("isToday");
+        //console.log("isToday");
         calendarBodyRowNew.append(
-          '<td class="today">' + day._d.getDate() + "</td>"
+          '<td class="today" data-localedate="' +
+            day._d.toLocaleDateString() +
+            '">' +
+            day._d.getDate() +
+            "</td>"
         );
       } else if (fnIsFuture(day._d)) {
-        console.log("isFuture");
+        //console.log("isFuture");
         calendarBodyRowNew.append(
-          '<td class="future">' + day._d.getDate() + "</td>"
+          '<td class="future" data-localedate="' +
+            day._d.toLocaleDateString() +
+            '">' +
+            day._d.getDate() +
+            "</td>"
         );
       }
     }
@@ -142,5 +159,74 @@ $(document).ready(function () {
     //getting Now as moment object
     const moToday = moment();
     return moment(momentDate, "d").isAfter(moToday, "d");
+  }
+
+  //fnIsCurrentMonth checks if the date belogns to current month
+  function fnIsCurrentMonth(momentDate) {
+    const moToday = moment();
+    return moment(momentDate, "M").isSame(moToday, "M");
+  }
+
+  //function getStoredTasks() receives a date in string format which will serve
+  //as key to retrieve tasks from local storage
+  //TODO
+  function fnGetStoredTasks(moDate) {}
+
+  //function fnTaskFactory defines a new Task Object
+  function fnTaskFactory(tDate, tStartT, tEndT, tAction, tPriority, tStatus) {
+    return {
+      tDate: tDate,
+      tStartT: tStartT,
+      tEndT: tEndT,
+      tAction: tAction,
+      tPriority: tPriority,
+      tStatus: tStatus,
+    };
+  }
+
+  //function fnStoreNewTask() sends new tasks to Local Storage
+  //TODO
+  function fnStoreNewTask(taskObj) {
+    //getting existing data if any
+    //   let storedObj = localStorage.getItem(objName);
+    //if no existing object, create one.
+    //otherwise, retrieve existing data
+    //   storedObj = storedObj ? JSON.parse(storedObj) : {};
+    //set new key-value
+    //   storedObj[objKey] = objValue;
+    //store back the object in the local storage
+    //   localStorage.setItem(objName, JSON.stringify(storedObj));
+  }
+
+  //function that renders time blocks with any existing task for that day
+  //function receives a date (by default it uses today's date)
+  function fnTaskGridRender(dateToRender) {
+    const taskGridDiv = $(".task-line-grid");
+    const dateToMomentObj = moment(dateToRender, "MM-DD-YYYY");
+    console.log("grid Render", dateToMomentObj);
+    for (let i = startDay; i <= endDay; i++) {
+      //repeating same process per each business hour
+      //call function to create hour display div
+      taskGridDiv.append(fnHourDisplayDiv(i));
+    }
+  }
+
+  //function fnHourDisplayDiv returns a div element for displaying the hour
+  function fnHourDisplayDiv(hourIteration) {
+    //checking whether ante or post meridiem
+    let meridiemText = "";
+    const divElement = $("<div>");
+    divElement.addClass("col-sm-2 dtime d-border");
+    if (hourIteration < 12) {
+      meridiemText = String(hourIteration) + ":00 AM";
+    } else {
+      meridiemText =
+        hourIteration > 12
+          ? String(hourIteration - 12) + ":00 PM"
+          : String(hourIteration) + ":00 PM";
+    }
+    divElement.text(meridiemText);
+
+    return divElement;
   }
 });
