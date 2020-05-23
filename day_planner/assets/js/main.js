@@ -16,7 +16,7 @@ $(document).ready(function () {
   //testing moment js
   const test = fnSetCalendar();
   fnRenderCalendarHTML(test);
-  fnTaskGridRender("5/21/2020");
+  fnTaskGridRender("5/23/2020");
   //   console.log(calendar);
   //   console.log(calendar[0].days[1]._d.getDate()); //returns day of the month in number format
   //   console.log(calendar[0].days[1]._d.getDay()); //returns day of the week in number format -- Sun is 0 - Sat is 6
@@ -204,7 +204,7 @@ $(document).ready(function () {
     //TODO: validate if date is past, present or future and adjust New Task btn class
     const taskGridDiv = $(".task-line-grid");
     const dateToMomentObj = moment(dateToRender, "MM-DD-YYYY");
-    console.log("grid Render", dateToMomentObj);
+    $(".section-title").text(dateToRender);
     for (let i = startDay; i <= endDay; i++) {
       //repeating same process per each business hour
       //call function to create hour display div

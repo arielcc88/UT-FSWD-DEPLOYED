@@ -1,48 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Day Planner</title>
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-          <div class="col-sm-12 col-md-6 calendar-ctner">
-            <h3>Calendar</h3>
-          </div>
-          <div class="col-sm-12 col-md-6 mth-tview">
-            <h3>Task Overview</h3>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-12 dly-tgrid">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Day Planner</title>
+        <!-- Google Fonts -->
+        <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+        rel="stylesheet"
+        />
+        <!-- Bootstrap -->
+        <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"
+        />
+        <!-- Custom styles -->
+        <link rel="stylesheet" href="assets/css/styles.css" />
+    </head>
+    <body>
+        <div class="container">
             <div class="row">
-                <div class="col-sm-8 section-title">-- Date -- Tasks</div>
-                <!-- TODO: add font awesome to New Task button -->
-                <div class="col-sm-4"></div>
+                <div class="col-sm-12 col-md-6 calendar-ctner">
+                    <h3>Calendar</h3>
+                </div>
+                <div class="col-sm-12 col-md-6 mth-tview">
+                    <h3>Task Overview</h3>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 dly-tgrid">
+                    <div class="row">
+                        <div class="col-sm-8 section-title">-- Date -- Tasks</div>
+                        <!-- TODO: add font awesome to New Task button -->
+                        <div class="col-sm-4"></div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="row task-line-grid">
+                            <div class="col-sm-2 dtime d-border">erfe</div>
+                            <div class="col-sm-7 task-ctner d-border">egerg</div>
+                            <div class="col-sm-3 btn-add d-border"><button type="button" class="btn btn-outline-primary">New Task</button></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-12">
-                <div class="row task-line-grid">
-                    <div class="col-sm-2 dtime d-border">erfe</div>
-                    <div class="col-sm-7 task-ctner d-border">egerg</div>
-                    <div class="col-sm-3 btn-add d-border"><button type="button" class="btn btn-outline-primary">New Task</button></div>
+            <!-- Modal -->
+            <div class="modal fade" id="newTaskModal" tabindex="-1" role="dialog" aria-labelledby="newTaskModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="newTaskModalLabel">New Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    ...
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
-      </div>
-    </div>
     <!-- Jquery -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
