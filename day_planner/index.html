@@ -35,9 +35,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="row task-line-grid">
-                            <div class="col-sm-2 dtime d-border">erfe</div>
-                            <div class="col-sm-7 task-ctner d-border">egerg</div>
-                            <div class="col-sm-3 btn-add d-border"><button type="button" class="btn btn-outline-primary">New Task</button></div>
+                            
                         </div>
                     </div>
                 </div>
@@ -53,11 +51,54 @@
                     </button>
                     </div>
                     <div class="modal-body">
-                    ...
+                    
+
+
+                        <form class="nwTaskForm">
+                            <div class="form-group">
+                                <label for="task-title">Task Title</label>
+                                <input type="text" class="form-control" id="task-title" placeholder="Task Title">
+                            </div>
+                            <fieldset disabled>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="task-date">Date</label>
+                                      <input type="text" class="form-control" id="task-date">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="task-time">Time</label>
+                                      <input type="text" class="form-control" id="task-time">
+                                    </div>
+                              </div>
+                            </fieldset>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="task-prio">Priority</label>
+                                  <select class="form-control" id="task-prio">
+                                    <option selected>Choose Priority...</option>
+                                    <option value="High">High</option>
+                                    <option value="Normal">Normal</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="task-status">Status</label>
+                                  <select class="form-control" id="task-status">
+                                    <option selected value="Pending">Pending</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                  </select>
+                                </div>
+                            </div>
+                        </form>
+
+
+
+
+
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="nw-sv-task" data-dismiss="modal">Save Task</button>
                     </div>
                 </div>
                 </div>

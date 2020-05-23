@@ -13,13 +13,27 @@ $(document).ready(function () {
     MAIN
     ---------
     */
-  //testing moment js
-  const test = fnSetCalendar();
-  fnRenderCalendarHTML(test);
-  fnTaskGridRender("5/23/2020");
-  //   console.log(calendar);
-  //   console.log(calendar[0].days[1]._d.getDate()); //returns day of the month in number format
-  //   console.log(calendar[0].days[1]._d.getDay()); //returns day of the week in number format -- Sun is 0 - Sat is 6
+  //Loading Calendar
+  const myCalendar = fnSetCalendar();
+  fnRenderCalendarHTML(myCalendar);
+  //Rendering Today's Tasks
+  fnTaskGridRender(moment().format("MM/DD/YY"));
+
+  //new task button handling
+  $(".nw-task-btn").on("click", function(){
+    fnResetNewTaskForm(); //initializing form to its default values
+    //TODO: temp storage of date and time in local storage
+    $("#task-date").val($(this).attr("data-date"));
+    $("#task-time").val($(this).attr("data-time"));
+  });
+
+  //Saving New Task Button
+  $("#nw-sv-task").on("click", function(){
+    fnSetNewTask();
+  })
+
+
+
 
   /*
     ---------
@@ -108,7 +122,8 @@ $(document).ready(function () {
         // console.log("isPassed");
         calendarBodyRowNew.append(
           '<td class="passed" data-localedate="' +
-            day._d.toLocaleDateString() +
+            //day._d.toLocaleDateString() +
+            moment(day._d).format("MM/DD/YY") +
             '">' +
             day._d.getDate() +
             "</td>"
@@ -117,7 +132,8 @@ $(document).ready(function () {
         //console.log("isToday");
         calendarBodyRowNew.append(
           '<td class="today" data-localedate="' +
-            day._d.toLocaleDateString() +
+            //day._d.toLocaleDateString() +
+            moment(day._d).format("MM/DD/YY") +
             '">' +
             day._d.getDate() +
             "</td>"
@@ -126,7 +142,8 @@ $(document).ready(function () {
         //console.log("isFuture");
         calendarBodyRowNew.append(
           '<td class="future" data-localedate="' +
-            day._d.toLocaleDateString() +
+            //day._d.toLocaleDateString() +
+            moment(day._d).format("MM/DD/YY") +
             '">' +
             day._d.getDate() +
             "</td>"
@@ -173,11 +190,10 @@ $(document).ready(function () {
   function fnGetStoredTasks(moDate) {}
 
   //function fnTaskFactory defines a new Task Object
-  function fnTaskFactory(tDate, tStartT, tEndT, tAction, tPriority, tStatus) {
+  function fnTaskFactory(tDate, tStartT, tAction, tPriority, tStatus) {
     return {
       tDate: tDate,
       tStartT: tStartT,
-      tEndT: tEndT,
       tAction: tAction,
       tPriority: tPriority,
       tStatus: tStatus,
@@ -203,7 +219,6 @@ $(document).ready(function () {
   function fnTaskGridRender(dateToRender) {
     //TODO: validate if date is past, present or future and adjust New Task btn class
     const taskGridDiv = $(".task-line-grid");
-    const dateToMomentObj = moment(dateToRender, "MM-DD-YYYY");
     $(".section-title").text(dateToRender);
     for (let i = startDay; i <= endDay; i++) {
       //repeating same process per each business hour
@@ -246,13 +261,35 @@ $(document).ready(function () {
     const divElement = $("<div>");
     divElement.addClass("col-sm-3 btn-add d-border");
     newTBtn.text("New Task");
-    newTBtn.addClass("btn btn-outline-primary");
+    newTBtn.addClass("btn btn-outline-primary nw-task-btn");
     newTBtn.attr({
       "data-date": blkDate,
       "data-time": blkTimeSlot,
+      "data-toggle": "modal",
+      "data-target": "#newTaskModal",
     });
     divElement.append(newTBtn);
 
     return divElement;
+  }
+
+  function fnResetNewTaskForm(){
+    $(".nwTaskForm").trigger("reset");
+  }
+
+  //function handles Save task button
+  function fnSetNewTask(){
+    //get values of form inputs and selects
+    const taskTitle = $("#task-title");
+    const taskDate  = $("#task-date");
+    const taskTime  = $("#task-time");
+    const taskPrio  = $("#task-prio"); 
+    const taskStatus  = $("#task-status"); 
+
+    //TODO: Validate values with function.
+
+    //call Task Object Factory
+    const NewTaskObj = fnTaskFactory(taskDate.val(), taskTime.val(), taskTitle.val(), taskPrio.val(), taskStatus.val());
+    console.log(NewTaskObj);
   }
 });
