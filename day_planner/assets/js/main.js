@@ -20,7 +20,7 @@ $(document).ready(function () {
   fnTaskGridRender(moment().format("MM/DD/YY"));
 
   //new task button handling
-  $(".nw-task-btn").on("click", function(){
+  $(document).on("click", ".nw-task-btn", function(){
     fnResetNewTaskForm(); //initializing form to its default values
     //TODO: temp storage of date and time in local storage
     $("#task-date").val($(this).attr("data-date"));
@@ -187,7 +187,23 @@ $(document).ready(function () {
   //function getStoredTasks() receives a date in string format which will serve
   //as key to retrieve tasks from local storage
   //TODO
-  function fnGetStoredTasks(moDate) {}
+  function fnGetStoredTasks(tDate, tTime) {
+    let timeSlotTaskArray = [];
+    //getting existing data if any for a day
+    let storedTaskArray = localStorage.getItem(tDate);
+    //if no existing object, create one (empty)
+    //otherwise, retrieve existing data
+    storedTaskArray = storedTaskArray ? JSON.parse(storedTaskArray) : [];
+    if(storedTaskArray){
+      storedTaskArray.forEach(function(element, index){
+        if (element.tStartT === tTime) {
+          timeSlotTaskArray.push(element);
+        }
+      });
+    }
+    console.log("timeSlotTaskArray ", timeSlotTaskArray);
+    return timeSlotTaskArray;
+  }
 
   //function fnTaskFactory defines a new Task Object
   function fnTaskFactory(tDate, tStartT, tAction, tPriority, tStatus) {
@@ -221,13 +237,14 @@ $(document).ready(function () {
   function fnTaskGridRender(dateToRender) {
     //TODO: validate if date is past, present or future and adjust New Task btn class
     const taskGridDiv = $(".task-line-grid");
+    //clearing previous content
+    taskGridDiv.empty();
     $(".section-title").text(dateToRender);
     for (let i = startDay; i <= endDay; i++) {
       //repeating same process per each business hour
       //call function to create hour display div
       taskGridDiv.append(fnHourDisplayDiv(i));
-      //TODO function to render stored tasks
-      taskGridDiv.append('<div class="col-sm-7 task-ctner d-border">Task Titles</div>');
+      taskGridDiv.append(fnGetTaskList(dateToRender, fnGetTimeSlot(i)));
       taskGridDiv.append(fnSetNewTaskBtn(dateToRender, fnGetTimeSlot(i)));
     }
   }
@@ -276,6 +293,7 @@ $(document).ready(function () {
   }
 
   function fnResetNewTaskForm(){
+    alert("reset");
     $(".nwTaskForm").trigger("reset");
   }
 
@@ -287,14 +305,40 @@ $(document).ready(function () {
     const taskTime  = $("#task-time");
     const taskPrio  = $("#task-prio"); 
     const taskStatus  = $("#task-status"); 
-
     //TODO: Validate values with function.
 
     //Call Task Object Factory
     const NewTaskObj = fnTaskFactory(taskDate.val(), taskTime.val(), taskTitle.val(), taskPrio.val(), taskStatus.val());
-    console.log(NewTaskObj);
     //Call function to store task object in local storage
-    fnStoreNewTask(NewTaskObj)
+    fnStoreNewTask(NewTaskObj);
+    //Rendering Task after change
+    fnTaskGridRender(moment(taskDate.val()).format("MM/DD/YY"));
+  }
 
+  //function to retrieve tasks for a time slot and returns a div element with all tasks
+  function fnGetTaskList(dateToRender, timeSlot){
+    //<div class="col-sm-7 task-ctner d-border">Task Titles</div>
+    //call function fnGetStoredTasks()
+    const taskArray = fnGetStoredTasks(dateToRender, timeSlot);
+    if (taskArray) {
+      //Task container div
+      const taskCtner = $("<div>");
+      //add class BSt Grid and task-ctner
+      taskCtner.addClass("col-sm-7 task-ctner d-border");
+      taskArray.forEach(function(task, index){
+        const taskDiv = $("<div>");
+        taskDiv.addClass("task " + task.tStatus);
+        taskDiv.attr({
+          "data-date": dateToRender,
+          "data-time": timeSlot,
+          "data-index": index,
+          "data-prio": task.tPriority
+        });
+        taskDiv.html("<p class=\"task-text\">" + task.tAction + "</p>")
+        taskCtner.append(taskDiv);
+      });
+      console.log(taskCtner);
+      return taskCtner;
+    }
   }
 });
