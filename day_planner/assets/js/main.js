@@ -293,7 +293,6 @@ $(document).ready(function () {
   }
 
   function fnResetNewTaskForm(){
-    alert("reset");
     $(".nwTaskForm").trigger("reset");
   }
 
