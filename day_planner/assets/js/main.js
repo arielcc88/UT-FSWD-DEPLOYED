@@ -203,15 +203,17 @@ $(document).ready(function () {
   //function fnStoreNewTask() sends new tasks to Local Storage
   //TODO
   function fnStoreNewTask(taskObj) {
-    //getting existing data if any
-    //   let storedObj = localStorage.getItem(objName);
+    //getting existing data if any for a day
+      let storedObjArr = localStorage.getItem(taskObj.tDate);
     //if no existing object, create one.
     //otherwise, retrieve existing data
-    //   storedObj = storedObj ? JSON.parse(storedObj) : {};
+      storedObjArr = storedObjArr ? JSON.parse(storedObjArr) : [];
     //set new key-value
-    //   storedObj[objKey] = objValue;
+      storedObjArr.push(taskObj);
+      console.log("obj Array", storedObjArr);
     //store back the object in the local storage
-    //   localStorage.setItem(objName, JSON.stringify(storedObj));
+      localStorage.setItem(taskObj.tDate, JSON.stringify(storedObjArr));
+      console.log("obj stored");
   }
 
   //function that renders time blocks with any existing task for that day
@@ -288,8 +290,11 @@ $(document).ready(function () {
 
     //TODO: Validate values with function.
 
-    //call Task Object Factory
+    //Call Task Object Factory
     const NewTaskObj = fnTaskFactory(taskDate.val(), taskTime.val(), taskTitle.val(), taskPrio.val(), taskStatus.val());
     console.log(NewTaskObj);
+    //Call function to store task object in local storage
+    fnStoreNewTask(NewTaskObj)
+
   }
 });
