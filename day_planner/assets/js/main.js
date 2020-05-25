@@ -422,14 +422,11 @@ $(document).ready(function () {
 
   function fnGetSingleTask(tDate, tTime, tIndex) {
     let taskObj = {};
-     //getting existing data if any for a day
-      let storedTaskArray = localStorage.getItem(tDate);
-    //if no existing object, create one.
-    //otherwise, retrieve existing data
-      storedTaskArray = storedTaskArray ? JSON.parse(storedTaskArray) : [];
-      storedTaskArray.sort();
-      if(storedTaskArray){
-      storedTaskArray.forEach(function(element, index){
+    //getting all stored tasks for that time slot
+    let taskListSlot = fnGetStoredTasks(tDate, tTime);
+    //looping through array to find the task to modify.
+    if (taskListSlot) {
+      taskListSlot.forEach(function(element, index){
         if ((element.tStartT === tTime) && (String(index) === tIndex)) {
           taskObj = element;
         }
@@ -439,7 +436,6 @@ $(document).ready(function () {
   }
 
   function fnUpdateTaskStatus(tDate, tTime, tIndex, updStatus){
-      debugger;
     let taskToUpd = fnGetSingleTask(tDate, tTime, tIndex);
     //changing status
     taskToUpd.tStatus = updStatus;
@@ -447,17 +443,21 @@ $(document).ready(function () {
   }
 
   function fnStoreUpdatedTask(taskUpdObj, tIndex){
-    let taskObj = {};
-    //getting existing data if any for a day
+    //a task counter will assist on finding the global index of modified task
+    let taskCounter = 0;
     let storedTaskArray = localStorage.getItem(taskUpdObj.tDate);
-    //if no existing object, create one.
-    //otherwise, retrieve existing data
+    //getting all tasks for the date
     storedTaskArray = storedTaskArray ? JSON.parse(storedTaskArray) : [];
-    //if tasks exist, find the one to be updated, change the values and store the array again
-    if (storedTaskArray) {
-        storedTaskArray[tIndex] = taskUpdObj;
-        localStorage.setItem(taskUpdObj.tDate, JSON.stringify(storedTaskArray));
-        fnTaskGridRender(moment(taskUpdObj.tDate).format("MM/DD/YY"));
-    }
+    storedTaskArray.forEach(function(element, index){
+      if ((element.tDate === taskUpdObj.tDate) && (element.tStartT === taskUpdObj.tStartT)) {
+        //verifying task index
+        if ((String(taskCounter) === tIndex)) { //same task index within same day and time slot
+          storedTaskArray[index] = taskUpdObj;
+          localStorage.setItem(taskUpdObj.tDate, JSON.stringify(storedTaskArray));
+          fnTaskGridRender(moment(taskUpdObj.tDate).format("MM/DD/YY"));
+        }
+        taskCounter++;
+      }
+    });
   }
 });
