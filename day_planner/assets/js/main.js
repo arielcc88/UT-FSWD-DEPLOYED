@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  /*
+  
+    /*
     ---------
     VAR DECLARATION
     ---------
@@ -7,6 +8,12 @@ $(document).ready(function () {
   //business hours
   const startDay = 8; //8:00 am
   const endDay = 17; //5:00 pm
+
+
+
+
+
+
 
   /*
     ---------
@@ -35,12 +42,27 @@ $(document).ready(function () {
   //rendering tasks when clicked on calendar
   $(".table tbody tr td").on("click", function(){
     fnTaskGridRender(moment($(this).attr("data-localedate")).format("MM/DD/YY"));
-
+    $(".table tbody tr td").removeClass("td-selected");
+    $(this).addClass("td-selected");
   });
 
+  //modifying task status
   $(document).on("click", ".task-text", function(){
     fnUpdateTaskModal($(this).parent().attr("data-date"), $(this).parent().attr("data-time"), $(this).parent().attr("data-index"));
   });
+
+  //updating task status in local storage
+  $("#upd-sv-task").on("click", function(){
+    let updSelect = $("#upd-task-status");
+    fnUpdateTaskStatus(updSelect.attr("data-date"), updSelect.attr("data-time"), updSelect.attr("data-tindex"), updSelect.val());
+  });
+
+
+
+
+
+
+
 
   /*
     ---------
@@ -103,8 +125,6 @@ $(document).ready(function () {
       } else {
         //call function to load table body content
         fnGetCalendarBody(calendarObj[item]);
-        // console.log('item: ', calendarObj[item]);
-        // console.log('item: ', calendarObj[item].days[0]._d.toLocaleDateString());
       }
     }
   }
@@ -202,7 +222,6 @@ $(document).ready(function () {
         }
       });
     }
-    //console.log("timeSlotTaskArray ", timeSlotTaskArray);
     return timeSlotTaskArray;
   }
 
@@ -264,13 +283,9 @@ $(document).ready(function () {
 
   function fnGetTimeSlotClass(vDate, vTime){
     //first concatenate arguments
-    //console.log("vDate ", vDate);
-    //console.log("vTime ", vTime);
     let vDateTime = vDate + " " + vTime;
     let moDateTime = moment(vDateTime, "MM/DD/YY H")
-    //console.log("moDateTime ", moDateTime);
     let currentMoDateTime = moment();
-    //console.log("currentMoDateTime ", currentMoDateTime);
     let taskRowClass = "";
     //first checking if date is in the past
     if (fnIsPassed(moDateTime._d)) {
@@ -412,9 +427,10 @@ $(document).ready(function () {
     //if no existing object, create one.
     //otherwise, retrieve existing data
       storedTaskArray = storedTaskArray ? JSON.parse(storedTaskArray) : [];
+      storedTaskArray.sort();
       if(storedTaskArray){
       storedTaskArray.forEach(function(element, index){
-        if ((element.tStartT === tTime) && (index === tIndex)) {
+        if ((element.tStartT === tTime) && (String(index) === tIndex)) {
           taskObj = element;
         }
       });
@@ -423,19 +439,25 @@ $(document).ready(function () {
   }
 
   function fnUpdateTaskStatus(tDate, tTime, tIndex, updStatus){
+      debugger;
     let taskToUpd = fnGetSingleTask(tDate, tTime, tIndex);
     //changing status
     taskToUpd.tStatus = updStatus;
     fnStoreUpdatedTask(taskToUpd, tIndex);
   }
 
-  function fnStoreUpdatedTask(taskUpdObj){
+  function fnStoreUpdatedTask(taskUpdObj, tIndex){
     let taskObj = {};
     //getting existing data if any for a day
     let storedTaskArray = localStorage.getItem(taskUpdObj.tDate);
     //if no existing object, create one.
     //otherwise, retrieve existing data
     storedTaskArray = storedTaskArray ? JSON.parse(storedTaskArray) : [];
-
+    //if tasks exist, find the one to be updated, change the values and store the array again
+    if (storedTaskArray) {
+        storedTaskArray[tIndex] = taskUpdObj;
+        localStorage.setItem(taskUpdObj.tDate, JSON.stringify(storedTaskArray));
+        fnTaskGridRender(moment(taskUpdObj.tDate).format("MM/DD/YY"));
+    }
   }
 });

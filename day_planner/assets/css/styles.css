@@ -11,8 +11,8 @@ td.passed{
 }
 
 td.today{
-    font-weight: bold;
-    font-size: 18px;
+    font-weight: bold !important;
+    font-size: 18px !important;
 }
 
 .inline-content{
@@ -46,9 +46,9 @@ td.today{
 }
 
 .calendar-ctner td.today{
-	border: solid 1px #007bff;
-	color: white;
-	background-color: #007bff;
+	border: solid 1px #007bff !important;
+	color: white !important;
+	background-color: #007bff !important;
 }
 
 .dly-tgrid{
@@ -69,7 +69,8 @@ p.task-text{
 	display: inline-block;
 	padding: 10px;
 	margin: 5px auto;
-	border-radius: 20px;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 .Pending > p.task-text{
@@ -87,4 +88,9 @@ p.task-text{
 
 .task-past {
 	background-color: #e2e3e5;
+}
+
+.td-selected{
+    background-color: lightgrey;
+    border: 1px solid lightgrey;
 }
