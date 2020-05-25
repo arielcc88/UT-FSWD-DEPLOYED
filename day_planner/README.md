@@ -16,7 +16,7 @@ The current state of the project is Phase 1. It allows for adding new tasks and 
 
 ## A view of your planner!!!
 
-![day planner view](./Assets/images/dp-app-view.jpg)
+![day planner view](./assets/images/dp-app-view.jpg)
 
 ## User Story
 
@@ -54,16 +54,16 @@ Important to Note:
 1- The app will let you add new task only if the time slot for such task is the present hour or future hours. You will not be able to add new task if the time has passed.
 2- Depending on the status of the task (Pending, Completed, Cancelled) the Task Grid will display color coded tasks.
 
-![adding new task](./Assets/images/adding-new-task.gif)
+![adding new task](./assets/images/adding-new-task.gif)
 
 ## Changing Status of a Task
 
 Changing the status of an existing task is possible by only clicking on the Task Title in the Task Grid. A modal pop-up will show up with a Status dropdown. Simply select the new status and click on Update Task.
 
-![updating task status](./Assets/images/updating-task-status.gif)
+![updating task status](./assets/images/updating-task-status.gif)
 
 
 ## Using Calendar to review other day's tasks
 Click on a day number in the calendat to see its tasks (if any was logged that day).
 
-![using calendar](./Assets/images/using-calendar.gif)
+![using calendar](./assets/images/using-calendar.gif)
