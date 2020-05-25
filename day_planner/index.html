@@ -19,24 +19,21 @@
         <link rel="stylesheet" href="assets/css/styles.css" />
     </head>
     <body>
-        <div class="container">
+        <div class="container ctner-margin">
             <div class="row">
                 <div class="col-sm-12 col-md-6 calendar-ctner">
                     <h3>Calendar</h3>
                 </div>
                 <div class="col-sm-12 col-md-6 mth-tview">
-                    <h3>Task Overview</h3>
+                    <h3>High Priority Tasks List</h3> 
+                    <div class="alert alert-info">Coming Soon!</div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 dly-tgrid">
                     <div class="row">
-                        <div class="col-sm-8 section-title">-- Date -- Tasks</div>
-                        <!-- TODO: add font awesome to New Task button -->
+                        <div class="col-sm-8 section-title"><h3></h3></div>
                         <div class="col-sm-4"></div>
                     </div>
-                    <div class="col-sm-12">
-                        <div class="row task-line-grid">
-                            
-                        </div>
+                    <div class="col-sm-12 task-grid-ctner">
                     </div>
                 </div>
             </div>
@@ -51,9 +48,6 @@
                     </button>
                     </div>
                     <div class="modal-body">
-                    
-
-
                         <form class="nwTaskForm">
                             <div class="form-group">
                                 <label for="task-title">Task Title</label>
@@ -89,15 +83,41 @@
                                 </div>
                             </div>
                         </form>
-
-
-
-
-
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" id="nw-sv-task" data-dismiss="modal">Save Task</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Modal Status-->
+            <div class="modal fade" id="updateTaskModal" tabindex="-1" role="dialog" aria-labelledby="updateTaskModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="newTaskModalLabel">Update Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="updTaskForm">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="task-status">Status</label>
+                                  <select class="form-control" id="upd-task-status">
+                                    <option selected value="Pending">Pending</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                  </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="upd-sv-task" data-dismiss="modal">Update Task</button>
                     </div>
                 </div>
                 </div>

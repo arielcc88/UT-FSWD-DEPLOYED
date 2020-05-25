@@ -32,8 +32,15 @@ $(document).ready(function () {
     fnSetNewTask();
   })
 
+  //rendering tasks when clicked on calendar
+  $(".table tbody tr td").on("click", function(){
+    fnTaskGridRender(moment($(this).attr("data-localedate")).format("MM/DD/YY"));
 
+  });
 
+  $(document).on("click", ".task-text", function(){
+    fnUpdateTaskModal($(this).parent().attr("data-date"), $(this).parent().attr("data-time"), $(this).parent().attr("data-index"));
+  });
 
   /*
     ---------
@@ -119,30 +126,24 @@ $(document).ready(function () {
     for (day of CalendarWeekObj["days"]) {
       //getting day of month using moment js getDate() method
       if (fnIsPassed(day._d)) {
-        // console.log("isPassed");
         calendarBodyRowNew.append(
           '<td class="passed" data-localedate="' +
-            //day._d.toLocaleDateString() +
             moment(day._d).format("MM/DD/YY") +
             '">' +
             day._d.getDate() +
             "</td>"
         );
       } else if (fnIsToday(day._d)) {
-        //console.log("isToday");
         calendarBodyRowNew.append(
           '<td class="today" data-localedate="' +
-            //day._d.toLocaleDateString() +
             moment(day._d).format("MM/DD/YY") +
             '">' +
             day._d.getDate() +
             "</td>"
         );
       } else if (fnIsFuture(day._d)) {
-        //console.log("isFuture");
         calendarBodyRowNew.append(
           '<td class="future" data-localedate="' +
-            //day._d.toLocaleDateString() +
             moment(day._d).format("MM/DD/YY") +
             '">' +
             day._d.getDate() +
@@ -201,7 +202,7 @@ $(document).ready(function () {
         }
       });
     }
-    console.log("timeSlotTaskArray ", timeSlotTaskArray);
+    //console.log("timeSlotTaskArray ", timeSlotTaskArray);
     return timeSlotTaskArray;
   }
 
@@ -226,27 +227,75 @@ $(document).ready(function () {
       storedObjArr = storedObjArr ? JSON.parse(storedObjArr) : [];
     //set new key-value
       storedObjArr.push(taskObj);
-      console.log("obj Array", storedObjArr);
     //store back the object in the local storage
       localStorage.setItem(taskObj.tDate, JSON.stringify(storedObjArr));
-      console.log("obj stored");
   }
 
   //function that renders time blocks with any existing task for that day
   //function receives a date (by default it uses today's date)
   function fnTaskGridRender(dateToRender) {
     //TODO: validate if date is past, present or future and adjust New Task btn class
-    const taskGridDiv = $(".task-line-grid");
+    const taskGridDiv = $(".task-grid-ctner");
     //clearing previous content
     taskGridDiv.empty();
-    $(".section-title").text(dateToRender);
+    $(".section-title h3").text("Logged Tasks for: " + dateToRender);
     for (let i = startDay; i <= endDay; i++) {
       //repeating same process per each business hour
       //call function to create hour display div
-      taskGridDiv.append(fnHourDisplayDiv(i));
-      taskGridDiv.append(fnGetTaskList(dateToRender, fnGetTimeSlot(i)));
-      taskGridDiv.append(fnSetNewTaskBtn(dateToRender, fnGetTimeSlot(i)));
+      let taskDiv = $("<div>");
+      //below function determines corresponding class depending if hour has passed
+      let timeSlotClass = fnGetTimeSlotClass(dateToRender, i);
+      taskDiv.addClass("row task-line-grid " + timeSlotClass);
+      //function to display hour in 12H format
+      taskDiv.append(fnHourDisplayDiv(i));
+      //getting and loading tasks for each time slot
+      taskDiv.append(fnGetTaskList(dateToRender, fnGetTimeSlot(i)));
+      //rendering action buttons for each time slot.
+      //onlw if task time slot has not passed yet.
+      if (timeSlotClass !== "task-past") {
+        taskDiv.append(fnSetNewTaskBtn(dateToRender, fnGetTimeSlot(i), "active"));
+      }
+      else {
+        taskDiv.append(fnSetNewTaskBtn(dateToRender, fnGetTimeSlot(i), "inactive"));
+      }
+      taskGridDiv.append(taskDiv);
     }
+  }
+
+  function fnGetTimeSlotClass(vDate, vTime){
+    //first concatenate arguments
+    //console.log("vDate ", vDate);
+    //console.log("vTime ", vTime);
+    let vDateTime = vDate + " " + vTime;
+    let moDateTime = moment(vDateTime, "MM/DD/YY H")
+    //console.log("moDateTime ", moDateTime);
+    let currentMoDateTime = moment();
+    //console.log("currentMoDateTime ", currentMoDateTime);
+    let taskRowClass = "";
+    //first checking if date is in the past
+    if (fnIsPassed(moDateTime._d)) {
+      // date is passed
+      taskRowClass = "task-past";
+    }
+    else if (fnIsFuture(moDateTime._d)){
+      // date is passed
+      taskRowClass = "task-future";
+    }
+    else if (fnIsToday(moDateTime._d)){
+      if (moDateTime._d.getHours() < currentMoDateTime._d.getHours()) {
+        //same day, past time
+        taskRowClass = "task-past";
+      }
+      else if (moDateTime._d.getHours() > currentMoDateTime._d.getHours()){
+        //same day, future time
+        taskRowClass = "task-future";
+      }
+      else{
+        //same day, same hour
+        taskRowClass = "task-now";
+      }
+    }
+    return taskRowClass;
   }
 
   //function fnHourDisplayDiv returns a div element for displaying the hour
@@ -274,19 +323,25 @@ $(document).ready(function () {
   }
 
   //function fnSetNewTaskBtn() creates the New Task button for each hour block
-  function fnSetNewTaskBtn(blkDate, blkTimeSlot) {
+  function fnSetNewTaskBtn(blkDate, blkTimeSlot, state) {
     //the date and time slots will be added to the button using data-* attrs.
     const newTBtn = $("<button>");
+    newTBtn.text("New Task");
     const divElement = $("<div>");
     divElement.addClass("col-sm-3 btn-add d-border");
-    newTBtn.text("New Task");
-    newTBtn.addClass("btn btn-outline-primary nw-task-btn");
-    newTBtn.attr({
-      "data-date": blkDate,
-      "data-time": blkTimeSlot,
-      "data-toggle": "modal",
-      "data-target": "#newTaskModal",
-    });
+    if (state === "active") {
+      newTBtn.addClass("btn btn-outline-primary nw-task-btn");
+      newTBtn.attr({
+        "data-date": blkDate,
+        "data-time": blkTimeSlot,
+        "data-toggle": "modal",
+        "data-target": "#newTaskModal",
+      }); 
+    }
+    else {
+      newTBtn.addClass("btn btn-outline-secondary nw-task-btn-disabled");
+      newTBtn.prop("disabled", true);
+    }
     divElement.append(newTBtn);
 
     return divElement;
@@ -336,8 +391,51 @@ $(document).ready(function () {
         taskDiv.html("<p class=\"task-text\">" + task.tAction + "</p>")
         taskCtner.append(taskDiv);
       });
-      console.log(taskCtner);
       return taskCtner;
     }
+  }
+
+  function fnUpdateTaskModal(tDate, tTimeSlot, tIndex){
+    const updSelect = $("#upd-task-status");
+    updSelect.attr({
+      "data-date": tDate,
+      "data-time": tTimeSlot,
+      "data-tindex": tIndex
+    });
+    $("#updateTaskModal").modal("show");
+  }
+
+  function fnGetSingleTask(tDate, tTime, tIndex) {
+    let taskObj = {};
+     //getting existing data if any for a day
+      let storedTaskArray = localStorage.getItem(tDate);
+    //if no existing object, create one.
+    //otherwise, retrieve existing data
+      storedTaskArray = storedTaskArray ? JSON.parse(storedTaskArray) : [];
+      if(storedTaskArray){
+      storedTaskArray.forEach(function(element, index){
+        if ((element.tStartT === tTime) && (index === tIndex)) {
+          taskObj = element;
+        }
+      });
+    }
+    return taskObj;
+  }
+
+  function fnUpdateTaskStatus(tDate, tTime, tIndex, updStatus){
+    let taskToUpd = fnGetSingleTask(tDate, tTime, tIndex);
+    //changing status
+    taskToUpd.tStatus = updStatus;
+    fnStoreUpdatedTask(taskToUpd, tIndex);
+  }
+
+  function fnStoreUpdatedTask(taskUpdObj){
+    let taskObj = {};
+    //getting existing data if any for a day
+    let storedTaskArray = localStorage.getItem(taskUpdObj.tDate);
+    //if no existing object, create one.
+    //otherwise, retrieve existing data
+    storedTaskArray = storedTaskArray ? JSON.parse(storedTaskArray) : [];
+
   }
 });
