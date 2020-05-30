@@ -20,6 +20,10 @@
       margin: 50px 0 0 0;
   }
 
+  .ct-img{
+      width: 100%;
+  }
+
   .dv-border {
       border: solid 2px black;
   }
@@ -27,4 +31,8 @@
   .ct-img-ctner{
       display: flex;
       justify-content: center;
+  }
+
+  .local-hr-forecast{
+      display: flex;
   }
