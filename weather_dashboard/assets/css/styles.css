@@ -1,0 +1,26 @@
+.wdash-cover {
+    /* parallax */
+    background-image: url("../images/app_bg_image.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: ;
+  }
+
+  .dsh-ctner{
+      padding: 100px 0 0 0;
+  }
+
+  .inner-ctner{
+      padding: 10px;
+  }
+
+  .dv-border {
+      border: solid 2px black;
+  }
+
+  .ct-img-ctner{
+      display: flex;
+      justify-content: center;
+  }
