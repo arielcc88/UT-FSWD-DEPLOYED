@@ -40,7 +40,12 @@ $(document).ready(function(){
     function fnQueryWeatherEndPntOneCall(response){
         //1st getting API End Point for One Call option
         let oneCallEndPointURL = fnGetEndPntURLOneCall(response.coord);
-        console.log("One Call URL ", oneCallEndPointURL);
+        // console.log("One Call URL ", oneCallEndPointURL);
+        //getting all required data
+        $.ajax({
+            url: oneCallEndPointURL,
+            method: "GET"
+        }).then();
     }
 
 
