@@ -18,3 +18,5 @@
   }
   .local-hr-forecast, .cr-conditions{ display: flex; }
   .cr-conditions { text-align: center;}
+  .fas {padding: 5px;}
+  .cr-uvi > .badge {margin-left: 5px;}

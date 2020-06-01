@@ -51,7 +51,6 @@ $(document).ready(function(){
             method: "GET"
         }).then(function(response){
             if (response !== null) {
-                console.log("this response", response)
                 //TODO: store city name here
                 //display City Name and Date
                 setCtNameNDate(response.current.dt);
@@ -69,14 +68,48 @@ $(document).ready(function(){
 
     function setCrConditions(objMain){
         let iconURL = "http://openweathermap.org/img/wn/" + objMain.weather[0].icon + "@2x.png";
+        let uvSeverity = fnGetUVSeverityClass(objMain.uvi);
+        console.log("severity object ", uvSeverity);
         //adjust src attr of icon img
         $(".cr-cond-icon").attr({"src": iconURL});
         $(".cr-wth-main").text(objMain.weather[0].main.toUpperCase());
         //updating temp
         $(".cr-local-temp").text(Math.floor(objMain.temp) + "°F");
         $(".cr-humidity").html("<i class=\"fas fa-tint\"></i>" + objMain.humidity + "%");
-        $(".cr-wind").text(objMain.wind_speed + "mph");
-        $(".cr-uvi").text(objMain.uvi);
+        $(".cr-wind").html("<i class=\"fas fa-wind\"></i>" + objMain.wind_speed + " MPH");
+
+        $(".cr-uvi").html("<i class=\"fas fa-sun\"></i>" + objMain.uvi + "<span class=\"badge badge-pill badge-" + uvSeverity.class + "\">" + uvSeverity.index + "</span>");
+    }
+
+    function fnGetUVSeverityClass(uviValue){
+        let uviSeverityObj = {
+            "index": "",
+            "class": ""
+        };
+        //classify severity of UVI
+        switch(true){
+            case (uviValue > 0 && uviValue < 3):
+                uviSeverityObj.index = "low";
+                uviSeverityObj.class = "success";
+                break;
+            case (uviValue >= 3 && uviValue < 6):
+                uviSeverityObj.index = "moderate";
+                uviSeverityObj.class = "warning";
+                break;
+            case (uviValue >= 6 && uviValue < 8):
+                uviSeverityObj.index = "high";
+                uviSeverityObj.class = "danger";
+                break;
+            case (uviValue >= 8 && uviValue < 11):
+                uviSeverityObj.index = "very high";
+                uviSeverityObj.class = "danger";
+                break;
+            case (uviValue >= 11):
+                uviSeverityObj.index = "extreme";
+                uviSeverityObj.class = "dark";
+                break;
+        }
+        return uviSeverityObj;
     }
 
     function fnGetEndPntURL(ctName){
