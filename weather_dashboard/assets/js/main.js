@@ -52,12 +52,13 @@ $(document).ready(function(){
         }).then(function(response){
             if (response !== null) {
                 //TODO: store city name here
+                fnStoreNewCity(currCityName);
                 //display City Name and Date
                 setCtNameNDate(response.current.dt);
                 //display current conditions icon and text
                 setCrConditions(response.current);
                 //setting forecast
-                
+                setForecastTiles(response.daily);
             }
         });
     }
@@ -113,6 +114,61 @@ $(document).ready(function(){
                 break;
         }
         return uviSeverityObj;
+    }
+
+    function setForecastTiles(objForecast){
+        $(".fr-five-ctner").empty();
+        for(let i = 1; i <= 5; i++){
+            //creating elements
+            //card div ctner
+            let frCardDivCtner = $("<div>");
+            frCardDivCtner.attr({
+                "class": "col-sm-12 col-md-2 fr-card"
+            });
+            //card header -> date
+            let frCardHeaderDate = $("<h5>");
+            frCardHeaderDate.attr({
+                "class": "fr-date-heading"
+            });
+            frCardHeaderDate.text(moment.unix(objForecast[i].dt).format("MM/DD/YYYY"));
+            frCardDivCtner.append(frCardHeaderDate);
+
+            //img for weather conditions
+            let frCondIcon = $("<img>");
+            frCondIcon.attr({
+                "class": "fr-cond-icon",
+                "src": "http://openweathermap.org/img/wn/" + objForecast[i].weather[0].icon + "@2x.png",
+                "alt": "forecast conditions icon"
+            });
+            frCardDivCtner.append(frCondIcon);
+
+            //fr-stat-ctner div
+            let frStatCtner = $("<div>");
+            frStatCtner.attr({
+                "class": "fr-stat-ctner"
+            });
+
+            //text for temp
+            let frTemp = $("<p>");
+            frTemp.attr({
+                "class": "fr-temp"
+            });
+            frTemp.html("<i class=\"fas fa-thermometer-half\"></i>" + Math.floor(objForecast[i].temp.day) + "°F");
+            frStatCtner.append(frTemp);
+
+            //text for humidity
+            let frHum = $("<p>");
+            frHum.attr({
+                "class": "fr-temp"
+            });
+            frHum.html("<i class=\"fas fa-tint\"></i>" + Math.floor(objForecast[i].humidity) + "%");
+            frStatCtner.append(frHum);
+
+            //appending stat container
+            frCardDivCtner.append(frStatCtner);
+            console.log("frDiv ", frCardDivCtner);
+            $(".fr-five-ctner").append(frCardDivCtner);
+        }
     }
 
     function fnGetEndPntURL(ctName){

@@ -16,7 +16,8 @@
       display: flex;
       justify-content: center;
   }
-  .local-hr-forecast, .cr-conditions{ display: flex; }
-  .cr-conditions { text-align: center;}
+  .local-hr-forecast, .cr-conditions, .fr-five-ctner{ display: flex; }
+  .cr-conditions, .fr-card { text-align: center;}
   .fas {padding: 5px;}
   .cr-uvi > .badge {margin-left: 5px;}
+  .fr-five-ctner {overflow-x: auto;}
