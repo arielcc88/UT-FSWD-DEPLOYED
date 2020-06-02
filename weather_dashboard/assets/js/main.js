@@ -56,6 +56,8 @@ $(document).ready(function(){
                 setCtNameNDate(response.current.dt);
                 //display current conditions icon and text
                 setCrConditions(response.current);
+                //setting forecast
+                
             }
         });
     }
@@ -77,8 +79,9 @@ $(document).ready(function(){
         $(".cr-local-temp").text(Math.floor(objMain.temp) + "°F");
         $(".cr-humidity").html("<i class=\"fas fa-tint\"></i>" + objMain.humidity + "%");
         $(".cr-wind").html("<i class=\"fas fa-wind\"></i>" + objMain.wind_speed + " MPH");
-
         $(".cr-uvi").html("<i class=\"fas fa-sun\"></i>" + objMain.uvi + "<span class=\"badge badge-pill badge-" + uvSeverity.class + "\">" + uvSeverity.index + "</span>");
+        $(".cr-snrise").html("<i class=\"fas fa-arrow-alt-circle-up\"></i>" + moment.unix(objMain.sunrise).format("MM/DD/YYYY hh:mm a"));
+        $(".cr-snset").html("<i class=\"fas fa-arrow-alt-circle-down\"></i>" + moment.unix(objMain.sunset).format("MM/DD/YYYY hh:mm a"));
     }
 
     function fnGetUVSeverityClass(uviValue){
@@ -120,6 +123,7 @@ $(document).ready(function(){
     }
 
     function fnGetEndPntURLOneCall(objCoord){
+        console.log("object ", objCoord);
         //function returns current or one call end point for the city requested by user.
         let endPntURL = "";
         let strExclude = "";
