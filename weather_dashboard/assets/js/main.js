@@ -12,7 +12,8 @@ $(document).ready(function(){
     }
 
     //Call welcome function. Loads latest city stored in local 
-    //TODO: Call welcome function here
+    fnWelcome();
+
 
     //**** LISTENERS ****/
     $("#wth-sch-button").on("click", function(event){
@@ -23,7 +24,47 @@ $(document).ready(function(){
         fnGetOneCallAPIData(currCityName);
     });
 
+    $(document).on("click", ".stored-ct", function(event){
+        event.preventDefault();
+        currCityName = $(this).attr("data-city");
+        fnGetOneCallAPIData(currCityName);
+    })
+
     /**** FUNCTIONS ****/
+    function fnWelcome(){
+        //getting existing data if any for a day
+        let storedCtArr = localStorage.getItem("arrCtNames");
+        //if no existing object, create one.
+        //otherwise, retrieve existing data
+        storedCtArr = storedCtArr ? JSON.parse(storedCtArr) : [];
+        //if city names are found, render search history.
+        if(storedCtArr){
+            fnRenderCtButtons(storedCtArr);
+            currCityName = storedCtArr[storedCtArr.length - 1];
+            fnGetOneCallAPIData(currCityName);
+        }
+    }
+
+    function fnRenderCtButtons(arrCtNamesLocal){
+        $(".wide-ul").empty();
+        arrCtNamesLocal.forEach(function(element){
+            let ctLi = $("<li>");
+            ctLi.attr({
+                "class": "wide-li"
+            });
+            
+            //creating <button> for city names to load from local storage
+            let ctButton = $("<button>");
+            ctButton.attr({
+                "class": "btn btn-info stored-ct",
+                "data-city": element,
+            })
+            ctButton.text(element.toUpperCase());
+            ctLi.append(ctButton);
+            $(".wide-ul").prepend(ctLi);
+        });
+    }
+
     function fnGetOneCallAPIData(ctName){
         //function returns Lon and Lat for a city
         let regEndPntURL = fnGetEndPntURL(ctName);
@@ -44,14 +85,13 @@ $(document).ready(function(){
     function fnQueryWeatherEndPntOneCall(response){
         //1st getting API End Point for One Call option
         let oneCallEndPointURL = fnGetEndPntURLOneCall(response.coord);
-        // console.log("One Call URL ", oneCallEndPointURL);
         //getting all required data
         $.ajax({
             url: oneCallEndPointURL,
             method: "GET"
         }).then(function(response){
             if (response !== null) {
-                //TODO: store city name here
+                //store city name here
                 fnStoreNewCity(currCityName);
                 //display City Name and Date
                 setCtNameNDate(response.current.dt);
@@ -72,9 +112,19 @@ $(document).ready(function(){
     function setCrConditions(objMain){
         let iconURL = "http://openweathermap.org/img/wn/" + objMain.weather[0].icon + "@2x.png";
         let uvSeverity = fnGetUVSeverityClass(objMain.uvi);
-        console.log("severity object ", uvSeverity);
-        //adjust src attr of icon img
-        $(".cr-cond-icon").attr({"src": iconURL});
+        $(".cr-icon-ctner").empty();
+        //img for weather conditions icon
+        let crCondIcon = $("<img>");
+        crCondIcon.attr({
+            "class": "cr-cond-icon",
+            "src": iconURL,
+            "alt": "current conditions icon"
+        });
+        let crCondMain = $("<h5>");
+        crCondMain.text(objMain.weather[0].main.toUpperCase());
+        $(".cr-icon-ctner").append(crCondMain);
+        $(".cr-icon-ctner").append(crCondIcon);
+        // $(".cr-cond-icon").attr({"src": iconURL});
         $(".cr-wth-main").text(objMain.weather[0].main.toUpperCase());
         //updating temp
         $(".cr-local-temp").text(Math.floor(objMain.temp) + "°F");
@@ -166,7 +216,6 @@ $(document).ready(function(){
 
             //appending stat container
             frCardDivCtner.append(frStatCtner);
-            console.log("frDiv ", frCardDivCtner);
             $(".fr-five-ctner").append(frCardDivCtner);
         }
     }
@@ -179,7 +228,6 @@ $(document).ready(function(){
     }
 
     function fnGetEndPntURLOneCall(objCoord){
-        console.log("object ", objCoord);
         //function returns current or one call end point for the city requested by user.
         let endPntURL = "";
         let strExclude = "";
@@ -195,7 +243,7 @@ $(document).ready(function(){
         return endPntURL;
     }
 
-    //TODO: finish below function
+    // finish below function
     function fnStoreNewCity(ctName) {
         //getting existing data if any for a day
         let storedCtArr = localStorage.getItem("arrCtNames");
@@ -203,10 +251,15 @@ $(document).ready(function(){
         //otherwise, retrieve existing data
         storedCtArr = storedCtArr ? JSON.parse(storedCtArr) : [];
         //checking number of elements on the array. only keeping 5 ct names
-        if (storedCtArr && storedCtArr.length === ctNameCount) {
-            storedCtArr.shift();
-        }
-        storedCtArr.push(ctName);
+        if(storedCtArr && !storedCtArr.includes(ctName)){
+            //check if array is at limit
+            if(storedCtArr.length === ctNameCount){
+                storedCtArr.shift();
+            }
+            storedCtArr.push(ctName);
+        }        
+        //rendering buttons
+        fnRenderCtButtons(storedCtArr);
         //store back the object in the local storage
         localStorage.setItem("arrCtNames", JSON.stringify(storedCtArr));
       }
