@@ -50,8 +50,14 @@
         "original": "1/2 cup dried apple pieces, roughly chopped",
         "originalString": "1/2 cup dried apple pieces, roughly chopped",
         "originalName": "dried apple pieces, roughly chopped",
-        "metaInformation": ["dried", "roughly chopped"],
-        "meta": ["dried", "roughly chopped"],
+        "metaInformation": [
+          "dried",
+          "roughly chopped"
+        ],
+        "meta": [
+          "dried",
+          "roughly chopped"
+        ],
         "extendedName": "dried apple",
         "image": "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg"
       }
@@ -280,8 +286,12 @@
         "original": "3 apples (we prefer Gala, Honeycrisp, or Fuji)",
         "originalString": "3 apples (we prefer Gala, Honeycrisp, or Fuji)",
         "originalName": "apples (we prefer Gala, Honeycrisp, or Fuji)",
-        "metaInformation": ["(we prefer Gala, Honeycrisp, or Fuji)"],
-        "meta": ["(we prefer Gala, Honeycrisp, or Fuji)"],
+        "metaInformation": [
+          "(we prefer Gala, Honeycrisp, or Fuji)"
+        ],
+        "meta": [
+          "(we prefer Gala, Honeycrisp, or Fuji)"
+        ],
         "image": "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg"
       }
     ],
@@ -322,8 +332,12 @@
         "original": "1 tablespoon packed brown sugar",
         "originalString": "1 tablespoon packed brown sugar",
         "originalName": "packed brown sugar",
-        "metaInformation": ["packed"],
-        "meta": ["packed"],
+        "metaInformation": [
+          "packed"
+        ],
+        "meta": [
+          "packed"
+        ],
         "image": "https://spoonacular.com/cdn/ingredients_100x100/light-brown-sugar.jpg"
       },
       {
@@ -337,8 +351,14 @@
         "original": "3 Granny Smith apples (about 1 1/4 lb), peeled, sliced",
         "originalString": "3 Granny Smith apples (about 1 1/4 lb), peeled, sliced",
         "originalName": "Granny Smith apples (about , peeled, sliced",
-        "metaInformation": ["peeled", "sliced"],
-        "meta": ["peeled", "sliced"],
+        "metaInformation": [
+          "peeled",
+          "sliced"
+        ],
+        "meta": [
+          "peeled",
+          "sliced"
+        ],
         "image": "https://spoonacular.com/cdn/ingredients_100x100/grannysmith-apple.png"
       },
       {
@@ -352,8 +372,12 @@
         "original": "1/4 cup kosher (coarse) salt",
         "originalString": "1/4 cup kosher (coarse) salt",
         "originalName": "kosher (coarse) salt",
-        "metaInformation": ["(coarse)"],
-        "meta": ["(coarse)"],
+        "metaInformation": [
+          "(coarse)"
+        ],
+        "meta": [
+          "(coarse)"
+        ],
         "image": "https://spoonacular.com/cdn/ingredients_100x100/salt.jpg"
       },
       {
@@ -397,8 +421,12 @@
         "original": "4 boneless center-cut pork chops, 1/2 inch thick (4 oz each)",
         "originalString": "4 boneless center-cut pork chops, 1/2 inch thick (4 oz each)",
         "originalName": "boneless center-cut pork chops, 1/2 inch thick each)",
-        "metaInformation": ["boneless"],
-        "meta": ["boneless"],
+        "metaInformation": [
+          "boneless"
+        ],
+        "meta": [
+          "boneless"
+        ],
         "extendedName": "boneless pork chops",
         "image": "https://spoonacular.com/cdn/ingredients_100x100/pork-chops.jpg"
       }
@@ -422,5 +450,573 @@
       }
     ],
     "likes": 0
+  },
+  {
+    "recipes": [
+      {
+        "vegetarian": false,
+        "vegan": false,
+        "glutenFree": false,
+        "dairyFree": true,
+        "veryHealthy": false,
+        "cheap": true,
+        "veryPopular": false,
+        "sustainable": false,
+        "weightWatcherSmartPoints": 0,
+        "gaps": "no",
+        "lowFodmap": false,
+        "preparationMinutes": 15,
+        "cookingMinutes": 0,
+        "aggregateLikes": 0,
+        "spoonacularScore": 8,
+        "healthScore": 0,
+        "creditsText": "My Recipes",
+        "sourceName": "My Recipes",
+        "pricePerServing": 1.24,
+        "extendedIngredients": [
+          {
+            "id": 9003,
+            "aisle": "Produce",
+            "image": "apple.jpg",
+            "consistency": "solid",
+            "name": "apple",
+            "original": "1/2 cup dried apple pieces, roughly chopped",
+            "originalString": "1/2 cup dried apple pieces, roughly chopped",
+            "originalName": "dried apple pieces, roughly chopped",
+            "amount": 0.5,
+            "unit": "cup",
+            "meta": [
+              "dried",
+              "roughly chopped"
+            ],
+            "metaInformation": [
+              "dried",
+              "roughly chopped"
+            ],
+            "measures": {
+              "us": {
+                "amount": 0.5,
+                "unitShort": "cups",
+                "unitLong": "cups"
+              },
+              "metric": {
+                "amount": 118.294,
+                "unitShort": "ml",
+                "unitLong": "milliliters"
+              }
+            }
+          },
+          {
+            "id": 10018022,
+            "aisle": "Baking",
+            "image": "corn-muffins.jpg",
+            "consistency": "solid",
+            "name": "corn muffin mix",
+            "original": "1 (15.2-oz.) package cinnamon streusel muffin mix",
+            "originalString": "1 (15.2-oz.) package cinnamon streusel muffin mix",
+            "originalName": "package cinnamon streusel muffin mix",
+            "amount": 15.2,
+            "unit": "oz",
+            "meta": [],
+            "metaInformation": [],
+            "measures": {
+              "us": {
+                "amount": 15.2,
+                "unitShort": "oz",
+                "unitLong": "ounces"
+              },
+              "metric": {
+                "amount": 430.913,
+                "unitShort": "g",
+                "unitLong": "grams"
+              }
+            }
+          },
+          {
+            "id": 9297,
+            "aisle": "Dried Fruits;Produce;Baking",
+            "image": "golden-raisins.jpg",
+            "consistency": "solid",
+            "name": "golden raisins",
+            "original": "1/2 cup golden raisins",
+            "originalString": "1/2 cup golden raisins",
+            "originalName": "golden raisins",
+            "amount": 0.5,
+            "unit": "cup",
+            "meta": [],
+            "metaInformation": [],
+            "measures": {
+              "us": {
+                "amount": 0.5,
+                "unitShort": "cups",
+                "unitLong": "cups"
+              },
+              "metric": {
+                "amount": 118.294,
+                "unitShort": "ml",
+                "unitLong": "milliliters"
+              }
+            }
+          }
+        ],
+        "id": 65597,
+        "title": "Cinnamon Streusel Muffins",
+        "readyInMinutes": 15,
+        "servings": 180,
+        "sourceUrl": "http://www.myrecipes.com/recipe/cinnamon-streusel-muffins-10000001694196/",
+        "image": "https://spoonacular.com/recipeImages/65597-556x370.jpg",
+        "imageType": "jpg",
+        "summary": "You can never have too many morn meal recipes, so give Cinnamon Streusel Muffins a try. One portion of this dish contains around <b>0g of protein</b>, <b>0g of fat</b>, and a total of <b>11 calories</b>. For <b>1 cents per serving</b>, this recipe <b>covers 0%</b> of your daily requirements of vitamins and minerals. This recipe serves 180. Head to the store and pick up apple pieces, cinnamon streusel muffin mix, golden raisins, and a few other things to make it today. 1 person found this recipe to be tasty and satisfying. From preparation to the plate, this recipe takes about <b>15 minutes</b>. It is a good option if you're following a <b>dairy free</b> diet. All things considered, we decided this recipe <b>deserves a spoonacular score of 11%</b>. This score is rather bad. Similar recipes include <a href=\"https://spoonacular.com/recipes/cinnamon-streusel-muffins-65330\">Cinnamon Streusel Muffins</a>, <a href=\"https://spoonacular.com/recipes/pumpkin-cinnamon-streusel-muffins-547924\">Pumpkin Cinnamon Streusel Muffins</a>, and <a href=\"https://spoonacular.com/recipes/apple-cinnamon-streusel-muffins-416249\">Apple Cinnamon Streusel Muffins</a>.",
+        "cuisines": [],
+        "dishTypes": [
+          "antipasti",
+          "starter",
+          "snack",
+          "appetizer",
+          "antipasto",
+          "hor d'oeuvre"
+        ],
+        "diets": [
+          "dairy free"
+        ],
+        "occasions": [],
+        "winePairing": {},
+        "instructions": "Prepare muffin mix according to package directions, stirring dried apple pieces and golden raisins into batter. Place foil baking cups in muffin pans. Spoon batter into cups, filling two-thirds full. Bake and cool muffins according to package directions.                                                                                                Note: For testing purposes only, we used Betty Crocker Cinnamon Streusel Premium Muffin Mix.",
+        "analyzedInstructions": [
+          {
+            "name": "",
+            "steps": [
+              {
+                "number": 1,
+                "step": "Prepare muffin mix according to package directions, stirring dried apple pieces and golden raisins into batter.",
+                "ingredients": [
+                  {
+                    "id": 9297,
+                    "name": "golden raisins",
+                    "localizedName": "golden raisins",
+                    "image": "golden-raisins.jpg"
+                  },
+                  {
+                    "id": 9003,
+                    "name": "apple",
+                    "localizedName": "apple",
+                    "image": "apple.jpg"
+                  }
+                ],
+                "equipment": []
+              },
+              {
+                "number": 2,
+                "step": "Place foil baking cups in muffin pans. Spoon batter into cups, filling two-thirds full.",
+                "ingredients": [],
+                "equipment": [
+                  {
+                    "id": 404765,
+                    "name": "aluminum foil",
+                    "localizedName": "aluminum foil",
+                    "image": "aluminum-foil.png"
+                  }
+                ]
+              },
+              {
+                "number": 3,
+                "step": "Bake and cool muffins according to package directions.",
+                "ingredients": [],
+                "equipment": []
+              },
+              {
+                "number": 4,
+                "step": "Note: For testing purposes only, we used Betty Crocker Cinnamon Streusel Premium Muffin",
+                "ingredients": [],
+                "equipment": []
+              },
+              {
+                "number": 5,
+                "step": "Mix.",
+                "ingredients": [],
+                "equipment": []
+              }
+            ]
+          }
+        ],
+        "originalId": null
+      },
+      {
+        "vegetarian": false,
+        "vegan": false,
+        "glutenFree": false,
+        "dairyFree": true,
+        "veryHealthy": false,
+        "cheap": true,
+        "veryPopular": false,
+        "sustainable": false,
+        "weightWatcherSmartPoints": 0,
+        "gaps": "no",
+        "lowFodmap": false,
+        "preparationMinutes": 15,
+        "cookingMinutes": 0,
+        "aggregateLikes": 0,
+        "spoonacularScore": 8,
+        "healthScore": 0,
+        "creditsText": "My Recipes",
+        "sourceName": "My Recipes",
+        "pricePerServing": 1.24,
+        "extendedIngredients": [
+          {
+            "id": 9003,
+            "aisle": "Produce",
+            "image": "apple.jpg",
+            "consistency": "solid",
+            "name": "apple",
+            "original": "1/2 cup dried apple pieces, roughly chopped",
+            "originalString": "1/2 cup dried apple pieces, roughly chopped",
+            "originalName": "dried apple pieces, roughly chopped",
+            "amount": 0.5,
+            "unit": "cup",
+            "meta": [
+              "dried",
+              "roughly chopped"
+            ],
+            "metaInformation": [
+              "dried",
+              "roughly chopped"
+            ],
+            "measures": {
+              "us": {
+                "amount": 0.5,
+                "unitShort": "cups",
+                "unitLong": "cups"
+              },
+              "metric": {
+                "amount": 118.294,
+                "unitShort": "ml",
+                "unitLong": "milliliters"
+              }
+            }
+          },
+          {
+            "id": 10018022,
+            "aisle": "Baking",
+            "image": "corn-muffins.jpg",
+            "consistency": "solid",
+            "name": "corn muffin mix",
+            "original": "1 (15.2-oz.) package cinnamon streusel muffin mix",
+            "originalString": "1 (15.2-oz.) package cinnamon streusel muffin mix",
+            "originalName": "package cinnamon streusel muffin mix",
+            "amount": 15.2,
+            "unit": "oz",
+            "meta": [],
+            "metaInformation": [],
+            "measures": {
+              "us": {
+                "amount": 15.2,
+                "unitShort": "oz",
+                "unitLong": "ounces"
+              },
+              "metric": {
+                "amount": 430.913,
+                "unitShort": "g",
+                "unitLong": "grams"
+              }
+            }
+          },
+          {
+            "id": 9297,
+            "aisle": "Dried Fruits;Produce;Baking",
+            "image": "golden-raisins.jpg",
+            "consistency": "solid",
+            "name": "golden raisins",
+            "original": "1/2 cup golden raisins",
+            "originalString": "1/2 cup golden raisins",
+            "originalName": "golden raisins",
+            "amount": 0.5,
+            "unit": "cup",
+            "meta": [],
+            "metaInformation": [],
+            "measures": {
+              "us": {
+                "amount": 0.5,
+                "unitShort": "cups",
+                "unitLong": "cups"
+              },
+              "metric": {
+                "amount": 118.294,
+                "unitShort": "ml",
+                "unitLong": "milliliters"
+              }
+            }
+          }
+        ],
+        "id": 65597,
+        "title": "Cinnamon Streusel Muffins II",
+        "readyInMinutes": 15,
+        "servings": 180,
+        "sourceUrl": "http://www.myrecipes.com/recipe/cinnamon-streusel-muffins-10000001694196/",
+        "image": "https://spoonacular.com/recipeImages/65597-556x370.jpg",
+        "imageType": "jpg",
+        "summary": "You can never have too many morn meal recipes, so give Cinnamon Streusel Muffins a try. One portion of this dish contains around <b>0g of protein</b>, <b>0g of fat</b>, and a total of <b>11 calories</b>. For <b>1 cents per serving</b>, this recipe <b>covers 0%</b> of your daily requirements of vitamins and minerals. This recipe serves 180. Head to the store and pick up apple pieces, cinnamon streusel muffin mix, golden raisins, and a few other things to make it today. 1 person found this recipe to be tasty and satisfying. From preparation to the plate, this recipe takes about <b>15 minutes</b>. It is a good option if you're following a <b>dairy free</b> diet. All things considered, we decided this recipe <b>deserves a spoonacular score of 11%</b>. This score is rather bad. Similar recipes include <a href=\"https://spoonacular.com/recipes/cinnamon-streusel-muffins-65330\">Cinnamon Streusel Muffins</a>, <a href=\"https://spoonacular.com/recipes/pumpkin-cinnamon-streusel-muffins-547924\">Pumpkin Cinnamon Streusel Muffins</a>, and <a href=\"https://spoonacular.com/recipes/apple-cinnamon-streusel-muffins-416249\">Apple Cinnamon Streusel Muffins</a>.",
+        "cuisines": [],
+        "dishTypes": [
+          "antipasti",
+          "starter",
+          "snack",
+          "appetizer",
+          "antipasto",
+          "hor d'oeuvre"
+        ],
+        "diets": [
+          "dairy free"
+        ],
+        "occasions": [],
+        "winePairing": {},
+        "instructions": "Prepare muffin mix according to package directions, stirring dried apple pieces and golden raisins into batter. Place foil baking cups in muffin pans. Spoon batter into cups, filling two-thirds full. Bake and cool muffins according to package directions.                                                                                                Note: For testing purposes only, we used Betty Crocker Cinnamon Streusel Premium Muffin Mix.",
+        "analyzedInstructions": [
+          {
+            "name": "",
+            "steps": [
+              {
+                "number": 1,
+                "step": "Prepare muffin mix according to package directions, stirring dried apple pieces and golden raisins into batter.",
+                "ingredients": [
+                  {
+                    "id": 9297,
+                    "name": "golden raisins",
+                    "localizedName": "golden raisins",
+                    "image": "golden-raisins.jpg"
+                  },
+                  {
+                    "id": 9003,
+                    "name": "apple",
+                    "localizedName": "apple",
+                    "image": "apple.jpg"
+                  }
+                ],
+                "equipment": []
+              },
+              {
+                "number": 2,
+                "step": "Place foil baking cups in muffin pans. Spoon batter into cups, filling two-thirds full.",
+                "ingredients": [],
+                "equipment": [
+                  {
+                    "id": 404765,
+                    "name": "aluminum foil",
+                    "localizedName": "aluminum foil",
+                    "image": "aluminum-foil.png"
+                  }
+                ]
+              },
+              {
+                "number": 3,
+                "step": "Bake and cool muffins according to package directions.",
+                "ingredients": [],
+                "equipment": []
+              },
+              {
+                "number": 4,
+                "step": "Note: For testing purposes only, we used Betty Crocker Cinnamon Streusel Premium Muffin",
+                "ingredients": [],
+                "equipment": []
+              },
+              {
+                "number": 5,
+                "step": "Mix.",
+                "ingredients": [],
+                "equipment": []
+              }
+            ]
+          }
+        ],
+        "originalId": null
+      },
+      {
+        "vegetarian": false,
+        "vegan": false,
+        "glutenFree": false,
+        "dairyFree": true,
+        "veryHealthy": false,
+        "cheap": true,
+        "veryPopular": false,
+        "sustainable": false,
+        "weightWatcherSmartPoints": 0,
+        "gaps": "no",
+        "lowFodmap": false,
+        "preparationMinutes": 15,
+        "cookingMinutes": 0,
+        "aggregateLikes": 0,
+        "spoonacularScore": 8,
+        "healthScore": 0,
+        "creditsText": "My Recipes",
+        "sourceName": "My Recipes",
+        "pricePerServing": 1.24,
+        "extendedIngredients": [
+          {
+            "id": 9003,
+            "aisle": "Produce",
+            "image": "apple.jpg",
+            "consistency": "solid",
+            "name": "apple",
+            "original": "1/2 cup dried apple pieces, roughly chopped",
+            "originalString": "1/2 cup dried apple pieces, roughly chopped",
+            "originalName": "dried apple pieces, roughly chopped",
+            "amount": 0.5,
+            "unit": "cup",
+            "meta": [
+              "dried",
+              "roughly chopped"
+            ],
+            "metaInformation": [
+              "dried",
+              "roughly chopped"
+            ],
+            "measures": {
+              "us": {
+                "amount": 0.5,
+                "unitShort": "cups",
+                "unitLong": "cups"
+              },
+              "metric": {
+                "amount": 118.294,
+                "unitShort": "ml",
+                "unitLong": "milliliters"
+              }
+            }
+          },
+          {
+            "id": 10018022,
+            "aisle": "Baking",
+            "image": "corn-muffins.jpg",
+            "consistency": "solid",
+            "name": "corn muffin mix",
+            "original": "1 (15.2-oz.) package cinnamon streusel muffin mix",
+            "originalString": "1 (15.2-oz.) package cinnamon streusel muffin mix",
+            "originalName": "package cinnamon streusel muffin mix",
+            "amount": 15.2,
+            "unit": "oz",
+            "meta": [],
+            "metaInformation": [],
+            "measures": {
+              "us": {
+                "amount": 15.2,
+                "unitShort": "oz",
+                "unitLong": "ounces"
+              },
+              "metric": {
+                "amount": 430.913,
+                "unitShort": "g",
+                "unitLong": "grams"
+              }
+            }
+          },
+          {
+            "id": 9297,
+            "aisle": "Dried Fruits;Produce;Baking",
+            "image": "golden-raisins.jpg",
+            "consistency": "solid",
+            "name": "golden raisins",
+            "original": "1/2 cup golden raisins",
+            "originalString": "1/2 cup golden raisins",
+            "originalName": "golden raisins",
+            "amount": 0.5,
+            "unit": "cup",
+            "meta": [],
+            "metaInformation": [],
+            "measures": {
+              "us": {
+                "amount": 0.5,
+                "unitShort": "cups",
+                "unitLong": "cups"
+              },
+              "metric": {
+                "amount": 118.294,
+                "unitShort": "ml",
+                "unitLong": "milliliters"
+              }
+            }
+          }
+        ],
+        "id": 65597,
+        "title": "Cinnamon Streusel Muffins III",
+        "readyInMinutes": 15,
+        "servings": 180,
+        "sourceUrl": "http://www.myrecipes.com/recipe/cinnamon-streusel-muffins-10000001694196/",
+        "image": "https://spoonacular.com/recipeImages/65597-556x370.jpg",
+        "imageType": "jpg",
+        "summary": "You can never have too many morn meal recipes, so give Cinnamon Streusel Muffins a try. One portion of this dish contains around <b>0g of protein</b>, <b>0g of fat</b>, and a total of <b>11 calories</b>. For <b>1 cents per serving</b>, this recipe <b>covers 0%</b> of your daily requirements of vitamins and minerals. This recipe serves 180. Head to the store and pick up apple pieces, cinnamon streusel muffin mix, golden raisins, and a few other things to make it today. 1 person found this recipe to be tasty and satisfying. From preparation to the plate, this recipe takes about <b>15 minutes</b>. It is a good option if you're following a <b>dairy free</b> diet. All things considered, we decided this recipe <b>deserves a spoonacular score of 11%</b>. This score is rather bad. Similar recipes include <a href=\"https://spoonacular.com/recipes/cinnamon-streusel-muffins-65330\">Cinnamon Streusel Muffins</a>, <a href=\"https://spoonacular.com/recipes/pumpkin-cinnamon-streusel-muffins-547924\">Pumpkin Cinnamon Streusel Muffins</a>, and <a href=\"https://spoonacular.com/recipes/apple-cinnamon-streusel-muffins-416249\">Apple Cinnamon Streusel Muffins</a>.",
+        "cuisines": [],
+        "dishTypes": [
+          "antipasti",
+          "starter",
+          "snack",
+          "appetizer",
+          "antipasto",
+          "hor d'oeuvre"
+        ],
+        "diets": [
+          "dairy free"
+        ],
+        "occasions": [],
+        "winePairing": {},
+        "instructions": "Prepare muffin mix according to package directions, stirring dried apple pieces and golden raisins into batter. Place foil baking cups in muffin pans. Spoon batter into cups, filling two-thirds full. Bake and cool muffins according to package directions.                                                                                                Note: For testing purposes only, we used Betty Crocker Cinnamon Streusel Premium Muffin Mix.",
+        "analyzedInstructions": [
+          {
+            "name": "",
+            "steps": [
+              {
+                "number": 1,
+                "step": "Prepare muffin mix according to package directions, stirring dried apple pieces and golden raisins into batter.",
+                "ingredients": [
+                  {
+                    "id": 9297,
+                    "name": "golden raisins",
+                    "localizedName": "golden raisins",
+                    "image": "golden-raisins.jpg"
+                  },
+                  {
+                    "id": 9003,
+                    "name": "apple",
+                    "localizedName": "apple",
+                    "image": "apple.jpg"
+                  }
+                ],
+                "equipment": []
+              },
+              {
+                "number": 2,
+                "step": "Place foil baking cups in muffin pans. Spoon batter into cups, filling two-thirds full.",
+                "ingredients": [],
+                "equipment": [
+                  {
+                    "id": 404765,
+                    "name": "aluminum foil",
+                    "localizedName": "aluminum foil",
+                    "image": "aluminum-foil.png"
+                  }
+                ]
+              },
+              {
+                "number": 3,
+                "step": "Bake and cool muffins according to package directions.",
+                "ingredients": [],
+                "equipment": []
+              },
+              {
+                "number": 4,
+                "step": "Note: For testing purposes only, we used Betty Crocker Cinnamon Streusel Premium Muffin",
+                "ingredients": [],
+                "equipment": []
+              },
+              {
+                "number": 5,
+                "step": "Mix.",
+                "ingredients": [],
+                "equipment": []
+              }
+            ]
+          }
+        ],
+        "originalId": null
+      }
+    ]
   }
 ]
