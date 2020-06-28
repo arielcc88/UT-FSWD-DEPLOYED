@@ -1,3 +1,7 @@
+//require section
+const generateMarkdown = require("./utils/generateMarkdown.js");
+const inquirer = require("inquirer");
+
 // array of questions for user
 const questions = [
 
