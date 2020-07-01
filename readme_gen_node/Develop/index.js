@@ -5,7 +5,10 @@ const inquirer = require("inquirer");
 // array of questions for user
 const questions = [
     //project title question object
-    { type: "input", name: "prjTitle", message: "Input Project Title:", validate: function (usrInput) { if (!usrInput) { return "Project Title is required."; } return true; }, }
+    { type: "input", name: "prjTitle", message: "Input Project Title:", validate: function (usrInput) { if (!usrInput) { return "Project Title is required."; } return true; } },
+    { type: "editor", name: "prjDesc", message: "Input Project Description:", validate: function (usrInput) { if (!usrInput) { return "Project Description is required."; } return true; } }
+    { type: "editor", name: "prjInstall", message: "Indicate Installation Instructions:", validate: function (usrInput) { if (!usrInput) { return "Install Instructions are required."; } return true; } }
+    { type: "editor", name: "prjUsage", message: "Add Usage Information:", validate: function (usrInput) { if (!usrInput) { return "Project Description is required."; } return true; } }
 
 ];
 
