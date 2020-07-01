@@ -128,8 +128,21 @@ function writeToFile(fileName, data) {
 
   //appending content to README file using fs WriteStream
   const fsTream = fs.createWriteStream(fileName, { flags: "a" });
+  let tempStreamLoader = "";
   Object.keys(data).forEach((section, position) => {
-    fsTream.write(generateMarkdown({ title: section }) + data[section] + "\n");
+    switch (section) {
+      case "Title":
+        //just print Project Title
+        tempStreamLoader = generateMarkdown({ title: data[section] }) + "\n";
+        break;
+
+      default:
+        tempStreamLoader =
+          generateMarkdown({ title: `#${section}` }) + data[section] + "\n";
+        break;
+    }
+
+    fsTream.write(tempStreamLoader);
   });
   fsTream.end();
 }
