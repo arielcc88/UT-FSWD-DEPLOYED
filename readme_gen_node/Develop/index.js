@@ -125,6 +125,13 @@ function writeToFile(fileName, data) {
   }
   //create new file
   fnCreateEmptyFile(fileName);
+
+  //appending content to README file using fs WriteStream
+  const fsTream = fs.createWriteStream(fileName, { flags: "a" });
+  Object.keys(data).forEach((section, position) => {
+    fsTream.write(generateMarkdown({ title: section }) + data[section] + "\n");
+  });
+  fsTream.end();
 }
 
 /**
