@@ -1,120 +1,15 @@
 //require section
-const generateMarkdown = require("./utils/generateMarkdown.js");
+
+const {
+  generateMarkdownTitle,
+
+  generateMarkdownSubTitle,
+} = require("./utils/generateMarkdown.js");
+
+const createTblContent = require("./utils/createTableOfContent.js");
+const questions = require("./utils/questionSet.js");
 const inquirer = require("inquirer");
 const fs = require("fs");
-
-// array of questions for user
-const questions = [
-  //project title question object
-  {
-    type: "input",
-    name: "Title",
-    message: "Input Project Title:",
-    validate: function (usrInput) {
-      if (!usrInput) {
-        return "Project Title is required.";
-      }
-      return true;
-    },
-  },
-  {
-    type: "editor",
-    name: "Description",
-    message: "Input Project Description:",
-    validate: function (usrInput) {
-      if (!usrInput) {
-        return "Project Description is required.";
-      }
-      return true;
-    },
-  },
-  {
-    type: "editor",
-    name: "Installation",
-    message: "Indicate Installation Instructions:",
-    validate: function (usrInput) {
-      if (!usrInput) {
-        return "Install Instructions are required.";
-      }
-      return true;
-    },
-  },
-  {
-    type: "input",
-    name: "Usage",
-    message: "Add Usage Information:",
-    validate: function (usrInput) {
-      if (!usrInput) {
-        return "Usage Information is required.";
-      }
-      return true;
-    },
-  },
-  {
-    type: "input",
-    name: "Contributing",
-    message: "Input Contribution Guidelines:",
-    validate: function (usrInput) {
-      if (!usrInput) {
-        return "Contribution Guidelines are required.";
-      }
-      return true;
-    },
-  },
-  {
-    type: "input",
-    name: "Tests",
-    message: "Indicate Test Instructions:",
-    validate: function (usrInput) {
-      if (!usrInput) {
-        return "Test Instructions are required.";
-      }
-      return true;
-    },
-  },
-  {
-    type: "list",
-    name: "License",
-    message: "Indicate License for this Project:",
-    choices: [
-      "PD",
-      "CCO",
-      "MIT",
-      "Apache",
-      "MPL",
-      "GPL",
-      "AGPL",
-      "JRL",
-      "AFPL",
-      "Proprietary Software",
-    ],
-    default: "MIT",
-  },
-  {
-    type: "input",
-    name: "QuestionsGitUsr",
-    message: "Enter GitHub username for Contact Section:",
-    validate: function (usrInput) {
-      if (!usrInput) {
-        return "GitHub username is required.";
-      }
-      return true;
-    },
-  },
-  {
-    type: "input",
-    name: "QuestionsEmail",
-    message: "Enter email address for Contact Section:",
-    validate: function (usrInput) {
-      if (!usrInput) {
-        return "Email is required.";
-      }
-      return true;
-    },
-  },
-];
-
-const tableContent = [""];
 
 // function to write README file
 function writeToFile(fileName, data) {
@@ -125,26 +20,56 @@ function writeToFile(fileName, data) {
   }
   //create new file
   fnCreateEmptyFile(fileName);
-
   //appending content to README file using fs WriteStream
   const fsTream = fs.createWriteStream(fileName, { flags: "a" });
   let tempStreamLoader = "";
+
   Object.keys(data).forEach((section, position) => {
     switch (section) {
       case "Title":
         //just print Project Title
-        tempStreamLoader = generateMarkdown({ title: data[section] }) + "\n";
+        tempStreamLoader =
+          generateMarkdownTitle({ title: data[section] }) + "\n\n";
+        //adding badge
+        tempStreamLoader += `![](https://img.shields.io/static/v1?label=License&message=${data["License"]}&color=green)\n\n`;
+        break;
+
+      case "Description":
+        //add Description section
+        tempStreamLoader =
+          generateMarkdownSubTitle({ subtitle: `${section}` }) +
+          data[section] +
+          "\n\n";
+
+        //create Table of Content function
+        tempStreamLoader += createTblContent(Object.keys(data)) + "\n\n";
+        break;
+
+      case "QuestionsGitUsr":
+        //Adding Questions section
+        tempStreamLoader =
+          generateMarkdownSubTitle({ subtitle: "Questions" }) +
+          `Want to get in touch? Github: ${data[section]}\n\n`;
+        break;
+
+      case "QuestionsEmail":
+        //Adding Questions section
+        tempStreamLoader = `Report bugs and enhancements to: ${data[section]}\n\n`;
         break;
 
       default:
         tempStreamLoader =
-          generateMarkdown({ title: `#${section}` }) + data[section] + "\n";
+          generateMarkdownSubTitle({ subtitle: `${section}` }) +
+          data[section] +
+          "\n\n";
         break;
     }
-
     fsTream.write(tempStreamLoader);
   });
   fsTream.end();
+  console.log(
+    `---- README.md for ${data.Title} has been successfully created. Happy Coding!! ----`
+  );
 }
 
 /**
@@ -192,11 +117,10 @@ function fnCreateEmptyFile(fileName) {
 // function to initialize program
 function init() {
   //console.log(generateMarkdown({"title" : "test"}));
-
   //questions away with inquirer
   inquirer.prompt(questions).then(function (answers) {
     writeToFile("README.md", answers);
-    console.log(answers);
+    //console.log(answers);
   });
 }
 
