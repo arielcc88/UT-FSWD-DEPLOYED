@@ -1,5 +1,5 @@
 {
-  "name": "pod_app",
+  "name": "pod_learning_app",
   "version": "1.0.0",
   "description": "Online Learning App.",
   "main": "server.js",
@@ -14,29 +14,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arielcc88/POD_APP.git"
+    "url": "git+https://github.com/podlearning/POD_LEARNING_APP.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/arielcc88/POD_APP/issues"
+    "url": "https://github.com/podlearning/POD_LEARNING_APP/issues"
   },
-  "homepage": "https://github.com/arielcc88/POD_APP#readme",
+  "homepage": "https://github.com/podlearning/POD_LEARNING_APP#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "custom-env": "^2.0.1",
     "express": "^4.16.3",
-    "express-session": "^1.17.1",
     "foundation-sites": "^6.6.3",
     "http": "0.0.1-security",
     "if-env": "1.0.4",
+    "jquery": "^3.5.1",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^1.6.4",
     "node-sass": "^4.14.1",
     "nodemailer": "^6.4.11",
-    "passport": "^0.4.1",
-    "passport-auth0": "^1.4.0",
     "react-animations": "^1.0.0",
     "react-spring": "^8.0.27",
     "sequelize": "^4.41.2",

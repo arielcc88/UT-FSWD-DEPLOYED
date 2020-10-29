@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useSelector } from "react-redux";
 import LoginModal from './LoginModal';
 import InstructorSignupModal from './InstructorSignupModal';
 import { Jumbotron, Button } from 'react-bootstrap';
@@ -11,7 +12,8 @@ import "../App.css";
 
 
 function Homepage() {
-    const dispatch = useDispatch();
+    //loginWithRedirect from auth0 SDK context
+    const { loginWithRedirect } = useAuth0();
     const [loginModalShow, setLoginModalShow] = useState(false);
     const [signupModalShow, setSignupModalShow] = useState(false);
 
@@ -51,7 +53,8 @@ function Homepage() {
                     <p tag="div">
                         {!isAuthenticatedUser && (
                         <div>
-                            <Button className="homepage-buttons primary-button" variant="primary" onClick={() => setLoginModalShow(true)}>Login</Button>
+                            {/* <Button className="homepage-buttons primary-button" variant="primary" onClick={() => setLoginModalShow(true)}>Login</Button> */}
+                            <Button className="homepage-buttons primary-button" variant="primary" onClick={() => loginWithRedirect()}>Login</Button>
                             <Button className="homepage-buttons" variant="lighterDark" onClick={() => setSignupModalShow(true)}>Become an Instructor</Button>
                         </div>
                         )}

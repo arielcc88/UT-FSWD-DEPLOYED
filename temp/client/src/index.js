@@ -5,8 +5,9 @@ import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import {Provider} from 'react-redux'
-import store from './store'
+import {Provider} from 'react-redux';
+import store from './store';
+import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
 
 ReactDOM.render(
   // <React.StrictMode>
@@ -15,7 +16,9 @@ ReactDOM.render(
   
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <Auth0ProviderWithHistory>
+        <App />
+      </Auth0ProviderWithHistory>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")
