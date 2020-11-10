@@ -1,5 +1,50 @@
-module.exports = [
-  {
+module.exports = [ 
+  { 
+    model: "Billing",
+    data: {
+      name: "John",
+      method: "Credit Card",
+      cycle: "Annual",
+      billing_amount: 100.00,
+    },
+  },
+  { 
+    model: "Billing",
+    data: {
+      name: "Jane",
+      method: "Credit Card",
+      cycle: "Annual",
+      billing_amount: 100.00,
+    },
+  },
+  { 
+    model: "Billing",
+    data: {
+      name: "Paul",
+      method: "Credit Card",
+      cycle: "Annual",
+      billing_amount: 100.00,
+    },
+  },
+  { 
+    model: "Billing",
+    data: {
+      name: "Chuck",
+      method: "Credit Card",
+      cycle: "Annual",
+      billing_amount: 100.00,
+    },
+  },
+  { 
+    model: "Billing",
+    data: {
+      name: "Admin",
+      method: "Credit Card",
+      cycle: "Annual",
+      billing_amount: 100.00,
+    },
+  },
+  { 
     model: "User",
     data: {
       first_name: "JOHN",
@@ -7,8 +52,10 @@ module.exports = [
       email: "johnnydoe@email.com",
       password: "$2y$12$x9mbOD2eawDl9k77cJuiBuRsyKJmmLENjBDmE8kfm22Whbntlvuh6", //12345
       confirmed: 0,
+      active: "no",
       createdAt: new Date().toISOString().slice(0, 19).replace("T", " "),
       updatedAt: new Date().toISOString().slice(0, 19).replace("T", " "),
+      billingId: 1,
     },
   },
   {
@@ -19,8 +66,10 @@ module.exports = [
       email: "janiedoe@email.com",
       password: "$2y$12$yXAg7i0fg608ljJSjpzAwePr70hwNXdsgqsik.SRZC.7Kfdd3NddG", //janepass
       confirmed: 1,
+      active: "yes",
       createdAt: new Date().toISOString().slice(0, 19).replace("T", " "),
       updatedAt: new Date().toISOString().slice(0, 19).replace("T", " "),
+      billingId: 2,
     },
   },
   {
@@ -31,8 +80,10 @@ module.exports = [
       email: "paulie@email.com",
       password: "$2y$12$KsiO1sXqttOyaZchQAfqbeO8ueFjgyguxC6r5NLlJeJwmPxW4U4mq", //pauliepass
       confirmed: 0,
+      active: "yes",
       createdAt: new Date().toISOString().slice(0, 19).replace("T", " "),
       updatedAt: new Date().toISOString().slice(0, 19).replace("T", " "),
+      billingId: 3,
     },
   },
   {
@@ -43,8 +94,10 @@ module.exports = [
       email: "chuckb@email.com",
       password: "$2y$12$R9xeB6HbpZVXzgelvpwO3e6JVX3/bxEthXaofUTXhkHuSG9ZdZS76", //chuck
       confirmed: 1,
+      active: "yes",
       createdAt: new Date().toISOString().slice(0, 19).replace("T", " "),
       updatedAt: new Date().toISOString().slice(0, 19).replace("T", " "),
+      billingId: 4,
     },
   },
   {
@@ -55,8 +108,10 @@ module.exports = [
       email: "admin@email.com",
       password: "$2y$12$x9mbOD2eawDl9k77cJuiBuRsyKJmmLENjBDmE8kfm22Whbntlvuh6", //12345
       confirmed: 1,
+      active: "yes",
       createdAt: new Date().toISOString().slice(0, 19).replace("T", " "),
       updatedAt: new Date().toISOString().slice(0, 19).replace("T", " "),
+      billingId: 5,
     },
   },
   {

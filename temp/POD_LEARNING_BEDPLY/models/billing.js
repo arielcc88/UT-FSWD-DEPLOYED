@@ -10,15 +10,25 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         cycle: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         billing_amount: {
-            type: DataTypes.DOUBLE,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false,
         },
         
     });
+    //associations for Billing
+//   Billing.associate = (models) => {
+//     Billing.hasOne(models.User, {
+//       foreignKey: {
+//         name: "UserId",
+//         allowNull: false,
+//       },
+//     });
+  
+// };
 
     return Billing;
 } 

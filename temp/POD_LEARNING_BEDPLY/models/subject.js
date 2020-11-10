@@ -14,16 +14,22 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
     });
+    
+    //associations
+    Subject.associate = (models) => {
 
-    //associations (Built from lesson.js)
-  
-//     //association to Subject model
-//     Subject.belongsToMany(models.User, {
-//       through: models.Users_Lessons,
-//       foreignKey: "lessonId",
-//       otherKey: "userId",
-//     });
-//   };
-
+    //Course associates with many Subjects for bridge table
+    Subject.belongsToMany(models.Course, {
+        through: "course_subject",
+        foreignKey: "subjectId",
+        otherKey: "courseId",
+      });
+    //Lesson associates with many Subjects and vice versa for bridge table
+    Subject.belongsToMany(models.Lesson, {
+        through: "subject_lesson",
+        foreignKey: "subjectId",
+        otherKey: "lessonId",
+      });
+    };
     return Subject;
 } 

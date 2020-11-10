@@ -12,5 +12,21 @@ module.exports = (sequelize, DataTypes) => {
                 
     });
 
+    //association to Lesson model
+    Quiz_Lesson_An.associate = (models) => {
+
+        Quiz_Lesson_An.belongsTo(models.Lesson, {
+            foreignKey: {
+            name: "lessonId"
+            }
+        });
+
+        Quiz_Lesson_An.belongsTo(models.Quiz_Lesson_Qn, {
+            foreignKey: {
+            name: "quiz_lessonId"
+            }
+        });
+    }
+
     return Quiz_Lesson_An;
 } 

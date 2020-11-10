@@ -16,5 +16,15 @@ module.exports = (sequelize, DataTypes) => {
         
     });
 
+    //association to Lesson model
+    Video_Lesson.associate = (models) => {
+
+        Video_Lesson.belongsTo(models.Lesson, {
+            foreignKey: {
+            name: "lessonId"
+            }
+          });
+    }
+
     return Video_Lesson;
 } 

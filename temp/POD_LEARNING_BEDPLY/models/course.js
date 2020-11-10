@@ -24,6 +24,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "courseId",
       otherKey: "userId",
     });
+    //Course associates with many Subjects for bridge table
+    Course.belongsToMany(models.Subject, {
+      through: "course_subject",
+      foreignKey: "courseId",
+      otherKey: "subjectId",
+    });
     //course hasMany lessons.
     Course.hasMany(models.Lesson, {
       onDelete: "cascade",

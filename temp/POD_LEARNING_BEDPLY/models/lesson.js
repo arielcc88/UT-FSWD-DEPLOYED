@@ -45,6 +45,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "lessonId",
       otherKey: "userId",
     });
+    //Lesson associates with many Subjects and vice versa for bridge table
+    Lesson.belongsToMany(models.Subject, {
+      through: "subject_lesson",
+      foreignKey: "lessonId",
+      otherKey: "subjectId",
+    });
   };
   return Lesson;
 };
