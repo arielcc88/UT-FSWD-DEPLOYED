@@ -1,0 +1,36 @@
+.InsLanding-background{
+    background-image: url("img/element5-digital-OyCl7Y4y0Bk-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.portal-sublanding-background {
+    height: 50vh;
+}
+
+.insBtn{
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.primary-button {
+    background-color: #2ba6cb;
+}
+
+.student-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* .student-card-image {
+    border-radius: 100px;
+} */

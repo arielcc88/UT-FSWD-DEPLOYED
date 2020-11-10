@@ -1,0 +1,387 @@
+/* Navbar Styling*/
+.pod-logo {
+  max-height: 50px;
+}
+
+/* Homepage Component styling */
+
+.homepage-background {
+  background-image: url("img/dolphins.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 300px;
+  border-radius: 0% !important;
+}
+
+
+.homepage-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+   
+.homepage-buttons {
+  margin: 10px;
+  color: white !important; 
+}
+
+/* .primary-button {
+  background-color: #2ba6cb;
+  margin: 10px;
+} */
+
+/* login modal */
+.login-modal {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Signup modal */
+.modal-dialog {
+  max-width: 500px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* auth styling*/
+.four0three img{
+  width: 100%;
+}
+
+.unauth-message {
+  padding: 80px 0 0 0;
+  text-align: center;
+}
+
+/* Instructor Landing Styling*/
+.instructor-landing-hero {
+  background-image: url("img/dolphins4.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+.student-landing-hero {
+  background-image: url("img/dolphins10.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+.ins-student-roster-hero {
+  background-image: url("img/dolphins6.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ins-courses-hero {
+  background-image: url("img/dolphins8.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ins-lessons-hero {
+  background-image: url("img/dolphins9.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.stu-lessons-hero {
+  background-image: url("img/dolphins9.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.instructor-landing-content .student-landing-content {
+  padding-top: 75px;
+}
+
+.student-courses-hero {
+  background-image: url("img/dolphins11.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.course-card .card {
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100px;
+  margin-right: 20px; 
+}
+
+.card-image {
+  background-image: url("img/dolphins6.jpg");
+  height: 175px;
+  background-size: cover;
+}
+
+/*Instructor Dashboard Styling*/
+.dashboard-container {
+  height: 750px;
+  display: flex;
+}
+
+.dashboard-content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+  max-height: 475px;
+  width: 1175px;
+}
+
+.calendar-row-item {
+  max-height: 450px;
+  max-width: 600px;
+  margin-top: 10px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: black;
+  border-radius: 10px;
+}
+
+.calendar {
+  max-height: 475px;
+  width: 500px;
+}
+
+.date-range-picker {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.nice-dates-grid {
+  max-height: 275px;
+}
+
+.courses-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 20px 25px;
+  max-height: 475px;
+  min-width: 1175px;
+}
+
+.courses-table {
+  max-height: 475px;
+  width: 1130px;
+  margin-top: 10px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: black;
+  border-radius: 10px;
+}
+
+.dashboard-table-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.dashboard-button {
+  height: 35px;
+  color: white !important;
+}
+
+.sidebar-container {
+  width: 225px;
+  height: inherit;
+}
+
+.page-sidebar {
+  width: 225px;
+  background-color: #35395D;
+  color: white;
+  height: inherit;
+}
+
+/*Video player CSS */
+.player-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 5%; 
+  height: 60vh;
+  
+}
+ 
+.react-player {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 120%;
+  width: 60%;
+}
+
+.video {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+}
+
+.leftHeroText {
+  font-size: 50px;
+  margin-left: 10%;
+}
+
+.rightHeroText {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 50px;
+  margin-right: 10%;
+}
+
+.aboutPod {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.taylor{
+  padding-top: 10px;
+}
+
+.whatWeDoSection{
+  padding-top: 5%;
+}
+
+.demoBtn {
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
+  margin-bottom: 10%;
+}
+
+.whiteText{
+  color: white !important;
+}
+
+.margin{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.footerSpace{
+  height: 50px;
+  background-color: #35395D;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.contact {
+  justify-content: flex-end;
+}
+
+.aboutBoxes{
+  display: flex;
+  justify-content: center;
+  background-color: #35395D;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.box {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  height: 200px;
+  width: 200px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  box-shadow: 0 0 10px 3px rgba(0,0,0,0.3);
+}
+
+.box1{
+  background-color: #4EBDCF;
+}
+
+.box2{
+  /* background-color: #F0775B; */
+  background-color: #92A8C2;
+}
+
+.caseStudySection{
+  margin: 5%;
+}
+
+.taylor{
+  font-size: 50px;
+}
+
+.list{
+  margin-top: 10px;
+  border: solid 1px #35395D;
+  border-radius: 5px;
+}
+
+li {
+  padding: 5px;
+}
+
+.giveMeSpace {
+  height: 600px;
+}
